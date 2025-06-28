@@ -130,12 +130,26 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        // Tropical animations
+        // Design Specification Animation System
+        'fade-in': 'fadeIn 500ms ease-in-out',
+        'slide-up': 'slideUp 400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
         'wave': 'wave 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'float-pattern': 'float-pattern 120s ease-in-out infinite',
         'shimmer': 'shimmer 2s ease-in-out infinite',
-        'ripple': 'ripple 0.6s ease-out',
+        'ripple': 'ripple 600ms ease-out',
+        'pulse-enhanced': 'pulse 2s ease-in-out infinite',
+        'bounce-enhanced': 'bounce 1000ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
+      transitionTimingFunction: {
+        'bounce': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'standard': 'ease-in-out',
+      },
+      transitionDuration: {
+        'micro': '200ms',
+        'short': '300ms',
+        'medium': '500ms',
+        'long': '1000ms',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
