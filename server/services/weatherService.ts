@@ -17,8 +17,7 @@ export async function getWeatherData(): Promise<WeatherData> {
 
     if (!currentResponse.ok) {
       if (currentResponse.status === 401) {
-        console.error('Invalid OpenWeatherMap API key provided');
-        throw new Error('Invalid API key. Please check your OpenWeatherMap API key configuration.');
+        throw new Error('Invalid OpenWeatherMap API key. Please verify your key at openweathermap.org and ensure it is activated.');
       }
       throw new Error(`Weather API responded with status: ${currentResponse.status}`);
     }
@@ -72,14 +71,9 @@ export async function getWeatherData(): Promise<WeatherData> {
     return weatherData;
   } catch (error) {
     console.error('Error fetching weather data:', error);
-    if (error instanceof Error && error.message.includes('Invalid API key')) {
-      throw new Error('The OpenWeatherMap API key is invalid. Please get a valid API key from openweathermap.org/api');
-    }
     throw error;
   }
 }
-
-
 
 function getWindDirection(degrees: number): string {
   const directions = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
