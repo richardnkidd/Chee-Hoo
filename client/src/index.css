@@ -55,6 +55,7 @@
   /* Semantic Color Mappings - Design Specification Exact */
   --background: rgb(var(--tropical-deep-green)); /* Background: Deep green */
   --foreground: rgb(var(--tropical-mist)); /* Text Primary: Mist (#F5F3F0) */
+  --text-primary: var(--tropical-stone); /* Primary text color */
   --muted: rgb(var(--tropical-sage) / 0.5);
   --muted-foreground: rgb(var(--tropical-sand)); /* Text Secondary: Sand (#EADDCA) */
   --popover: rgb(var(--tropical-stone) / 0.98); /* Surface: Stone with varying opacity (80-98%) */
@@ -90,7 +91,7 @@
     background: linear-gradient(180deg, var(--tropical-mist) 0%, var(--tropical-sand) 100%) !important;
     /* Design Specification: Lighter mist to sand gradient - Force Applied */
     background-attachment: fixed;
-    color: rgb(245, 243, 240) !important; /* Text Primary: Mist (#F5F3F0) */
+    color: var(--text-primary) !important;
     position: relative;
   }
 
@@ -164,9 +165,9 @@
   }
 
   /* Clear typography hierarchy - Enhanced Contrast */
-  .text-primary { 
-    color: rgb(var(--tropical-mist)); 
-    opacity: 1; 
+  .text-primary {
+    color: var(--text-primary);
+    opacity: 1;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
   
@@ -588,8 +589,8 @@ body,
 .text-foreground,
 .text-primary,
 h1, h2, h3, h4, h5, h6,
-p, span, div {
-  color: #F5F3F0 !important; /* Mist */
+body, p, li {
+  color: var(--text-primary) !important;
 }
 
 .text-muted-foreground,
