@@ -155,6 +155,10 @@ Changelog:
   - Updated semantic color mappings: Background (deep green to ocean gradient), Surface (stone 80-98% opacity), Text Primary (mist), Text Secondary (sand), Accent (ocean light), Error (volcanic)
   - Converted Tailwind configuration from HSL to RGB format for proper color system integration
   - Updated background gradient to use design specification colors
+- June 28, 2025: Lightened background gradient per user request
+  - Changed from dark deep-green→ocean gradient to light mist→sand gradient
+  - Background now uses: linear-gradient(180deg, var(--tropical-mist) 0%, var(--tropical-sand) 100%)
+  - Creates a lighter aesthetic transitioning from off-white (#F5F3F0) to light tan (#EADDCA)
 ```
 
 ## User Preferences
