@@ -619,3 +619,16 @@ input:focus, textarea:focus, select:focus {
   border-color: rgb(var(--tropical-ocean-light) / 0.6) !important;
   box-shadow: 0 0 0 3px rgb(var(--tropical-ocean) / 0.1) !important;
 }
+
+/* Accent actions */
+a,
+.btn-primary {
+  background-color: rgb(var(--tropical-ocean-light));
+  color: rgb(var(--tropical-mist));
+  transition: background-color 0.3s ease;
+}
+
+a:hover,
+.btn-primary:hover {
+  background-color: color-mix(in srgb, rgb(var(--tropical-ocean-light)) 92%, black);
+}
