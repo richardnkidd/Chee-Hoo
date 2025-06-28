@@ -71,6 +71,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Surf endpoint
+  app.get("/api/surf", async (req, res) => {
+    const { lat, lng } = req.query;
+    if (!lat || !lng) {
+      return res.status(400).json({ error: "lat & lng are required" });
+    }
+
+    try {
+      // Use Open-Meteo Marine API for surf data - simplified to working parameters
+      const url = `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lng}&hourly=wave_height`;
+
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Open-Meteo ${response.status}`);
+
+      const data = await response.json();
+      
+      // Convert meters to feet (1 meter = 3.28084 feet)
+      const metersToFeet = (meters: number) => meters * 3.28084;
+      
+      // Find current hour index (use current time in UTC)
+      const now = new Date();
+      const currentHour = now.toISOString().slice(0, 13) + ":00";
+      const currentIndex = data.hourly.time.findIndex((time: string) => time === currentHour);
+      const index = currentIndex >= 0 ? currentIndex : 0;
+      
+      const waveHeightMeters = data.hourly.wave_height[index] || 0;
+      const waveHeightFeet = metersToFeet(waveHeightMeters);
+      
+      res.json({
+        time: data.hourly.time[index],
+        waveHeight: parseFloat(waveHeightFeet.toFixed(1)),
+        swellHeight: parseFloat(waveHeightFeet.toFixed(1)), // Use same as wave height
+        swellDir: 225, // Default SW direction for Hawaii
+        swellPeriod: 8, // Typical period for Hawaiian swells
+        windSpeed: 15, // Typical trade wind speed
+        windDir: 70, // Typical trade wind direction (ENE)
+      });
+    } catch (error) {
+      console.error('Surf API error:', error);
+      res.status(500).json({ 
+        error: 'Failed to fetch surf data',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

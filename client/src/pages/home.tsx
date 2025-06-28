@@ -62,6 +62,7 @@ export default function Home() {
         mutate('/api/tides'),
         mutate('/api/movies'),
         mutate('/api/events'),
+        mutate('/api/surf?lat=21.276&lng=-157.822'),
       ]);
       setLastUpdated('Just now');
       toast({

@@ -24,48 +24,66 @@ export default function SurfCard(props: Props) {
     lng: props.lng ?? -157.822,
   });
 
-  if (error) return <Card><CardContent>❌ Surf data error.</CardContent></Card>;
-  if (isLoading || !data) return <Card className="animate-pulse h-40" />;
+  if (error) return (
+    <div className="flex flex-col space-y-4">
+      <div className="flex items-center space-x-2">
+        <Waves className="w-5 h-5 text-tropical-ocean" />
+        <h3 className="text-h3 font-display">Surf · Bowls</h3>
+      </div>
+      <div className="text-secondary text-small">Unable to load surf conditions</div>
+    </div>
+  );
+  
+  if (isLoading || !data) return (
+    <div className="flex flex-col space-y-4">
+      <div className="flex items-center space-x-2">
+        <Waves className="w-5 h-5 text-tropical-ocean" />
+        <h3 className="text-h3 font-display">Surf · Bowls</h3>
+      </div>
+      <div className="loading-skeleton h-16 w-full"></div>
+    </div>
+  );
 
-  const { waveHeight, swellDir, swellPeriod, windSpeed, windDir } = data as any;
+  const { waveHeight, swellDir, swellPeriod, windSpeed, windDir, time } = data as any;
 
   return (
-    <Card className="relative overflow-hidden shadow-tropical
-        bg-gradient-to-br from-tropical-ocean-light/30 via-white/0 to-white/0
-        after:absolute after:-top-40 after:-left-40 after:w-[200%] after:h-[200%]
-        after:bg-[url('/wave.svg')] after:bg-[length:400px_400px] after:opacity-5 after:animate-float-pattern">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-lg flex items-center gap-2">
-          <Waves className="w-5 h-5" /> Surf · {props.breakName ?? "Bowls"}
-        </CardTitle>
-        <CardDescription className="text-xs">
-          Updated {new Date((data as any).time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
-        </CardDescription>
-      </CardHeader>
+    <div className="flex flex-col space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <Waves className="w-5 h-5 text-tropical-ocean" />
+          <h3 className="text-h3 font-display">Surf · {props.breakName ?? "Bowls"}</h3>
+        </div>
+        <div className="text-caption text-secondary">
+          Updated {new Date(time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+        </div>
+      </div>
 
-      <CardContent className="flex items-end justify-between">
-        <span
-          className={cn(
-            "font-display text-5xl font-semibold leading-none tracking-tight pr-1",
-            heightColor((data as any).waveHeight)
-          )}
-        >
-          {(data as any).waveHeight?.toFixed(1)}<span className="text-2xl">ft</span>
-        </span>
+      <div className="flex items-end justify-between">
+        <div className="flex items-baseline space-x-1">
+          <span className={cn(
+            "font-display text-[48px] font-semibold leading-none tracking-tight",
+            heightColor(waveHeight)
+          )}>
+            {waveHeight.toFixed(1)}
+          </span>
+          <span className="text-h3 text-secondary font-medium">ft</span>
+        </div>
 
-        <div className="text-right text-sm">
-          <div className="flex items-center justify-end gap-1">
+        <div className="text-right space-y-1">
+          <div className="flex items-center justify-end space-x-1">
             <ArrowUpRight
               style={{ transform: `rotate(${swellDir}deg)` }}
               className="w-4 h-4 text-tropical-stone"
             />
-            Swell {toHeading(swellDir)} / {Math.round((data as any).swellPeriod)} s
+            <span className="text-small text-secondary">
+              Swell {toHeading(swellDir)} / {Math.round(swellPeriod)}s
+            </span>
           </div>
-          <div className="flex items-center justify-end gap-1">
-            🌬 {windSpeed.toFixed(0)} kn {toHeading(windDir)}
+          <div className="text-small text-secondary">
+            Wind {windSpeed}kn {toHeading(windDir)}
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

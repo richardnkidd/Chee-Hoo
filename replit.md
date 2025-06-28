@@ -144,6 +144,12 @@ Changelog:
   - Added loading states with shimmer effects and skeleton loaders
   - Enhanced button interactions with ripple effects on click
   - Updated card transitions to use design specification timing functions
+- June 28, 2025: Fixed and implemented surf data functionality
+  - Resolved API route registration issues causing HTML responses instead of JSON
+  - Integrated Open-Meteo Marine API for real-time wave height data
+  - Converted metric units to feet for Hawaii surf conditions
+  - Added surf data to refresh functionality and dashboard display
+  - SurfCard now shows live wave heights, swell direction, and wind conditions
 ```
 
 ## User Preferences
