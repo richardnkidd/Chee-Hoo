@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Waves, RefreshCw, WifiOff, Palmtree } from 'lucide-react';
 import { WeatherCard } from '../components/WeatherCard';
+import SurfCard from '@/components/cards/SurfCard';
 import { TideCard } from '../components/TideCard';
 import { MoviesCard } from '../components/MoviesCard';
 import { EventsCard } from '../components/EventsCard';
@@ -126,6 +127,9 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           <div className="tropical-card p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <WeatherCard />
+          </div>
+          <div className="tropical-card p-6 animate-fade-in" style={{ animationDelay: '0.15s' }}>
+            <SurfCard />
           </div>
           <div className="tropical-card p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <TideCard />
