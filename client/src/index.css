@@ -15,6 +15,7 @@
   --tropical-volcanic: 139, 35, 35; /* #8B2323 - Lava red */
   --tropical-stone: 45, 45, 43; /* #2D2D2B - Dark grey/charcoal */
   --tropical-mist: 245, 243, 240; /* #F5F3F0 - Off-white */
+  --tropical-mist-rgb: var(--tropical-mist);
   
   /* Map semantic variables to design specification colors */
   --background: 25, 30, 25; /* Deep green */
@@ -309,9 +310,16 @@
     background: rgba(45, 45, 43, 0.9) !important; /* Stone #2D2D2B */
     backdrop-filter: blur(16px);
     border: 1px solid rgba(234, 221, 202, 0.3) !important; /* Sand #EADDCA */
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(234, 221, 202, 0.1);
+  }
+
+  /* Basic card surface */
+  .card {
+    background: rgba(var(--tropical-mist-rgb), 0.85);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
   }
 
   /* Text Emphasis Classes - Design Specification Compliant */
