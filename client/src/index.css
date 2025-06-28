@@ -569,13 +569,10 @@
 
 /* Force all backgrounds to use design specification */
 .bg-background, 
-body, 
+body,
 #root,
 [data-theme] {
-  background: linear-gradient(135deg,
-    #191E19 0%,
-    #2D2D2B 50%,
-    #0F2B3E 100%) !important;
+  background: linear-gradient(180deg, var(--tropical-mist) 0%, var(--tropical-sand) 100%);
   background-color: #191E19 !important;
 }
 
