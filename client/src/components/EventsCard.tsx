@@ -79,7 +79,7 @@ export const EventsCard: React.FC = () => {
                 </div>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-primary">{event.title}</h3>
+                <h3 className="text-sm font-medium text-primary line-clamp-2">{event.title}</h3>
                 <p className="text-xs text-secondary mb-1">
                   {event.venue} • {event.time}
                 </p>

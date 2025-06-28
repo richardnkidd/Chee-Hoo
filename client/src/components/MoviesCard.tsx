@@ -78,7 +78,7 @@ export const MoviesCard: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap gap-1">
                   {movie.times.map((time, timeIndex) => (
-                    <span key={timeIndex} className="px-2 py-1 bg-slate-700 rounded text-xs text-primary">
+                    <span key={timeIndex} className="px-2 h-6 inline-flex items-center bg-slate-700 rounded text-xs text-primary">
                       {time}
                     </span>
                   ))}

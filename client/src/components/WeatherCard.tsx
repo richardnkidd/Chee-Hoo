@@ -52,7 +52,7 @@ export const WeatherCard: React.FC = () => {
           <div className="relative">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--tropical-ocean))] to-[rgb(var(--tropical-ocean-light))]"></div>
-              <WeatherIcon className="w-6 h-6 text-white relative z-10" />
+              <WeatherIcon className="w-8 h-8 text-white relative z-10" />
             </div>
           </div>
           <div>
