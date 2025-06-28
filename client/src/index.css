@@ -309,9 +309,17 @@
     background: rgba(45, 45, 43, 0.9) !important; /* Stone #2D2D2B */
     backdrop-filter: blur(16px);
     border: 1px solid rgba(234, 221, 202, 0.3) !important; /* Sand #EADDCA */
-    box-shadow: 
+    box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(234, 221, 202, 0.1);
+  }
+
+  /* Dark gradient header */
+  .site-header {
+    background: linear-gradient(180deg,
+      rgb(var(--tropical-deep-green)) 0%,
+      rgb(var(--tropical-ocean-deep)) 100%);
+    color: rgb(var(--tropical-mist));
   }
 
   /* Text Emphasis Classes - Design Specification Compliant */
