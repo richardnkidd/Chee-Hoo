@@ -1,0 +1,353 @@
+# Honolulu App - Critical Fixes & Backend Implementation
+
+The current app has several critical issues preventing basic functionality. Here's a comprehensive fix prompt:
+
+## 1. Backend API Implementation (CRITICAL)
+
+Create a working backend with these API endpoints:
+
+### `/api/weather` - OpenWeatherMap Integration
+```typescript
+// Mock implementation for immediate functionality
+const mockWeatherData = {
+  current: {
+    temp: 78,
+    condition: "Partly Cloudy",
+    feelsLike: 82,
+    humidity: 65,
+    wind: "12 mph ENE",
+    pressure: "30.02 in",
+    uvIndex: 6
+  },
+  forecast: [
+    { day: "Today", condition: "Partly Cloudy", highTemp: 82, lowTemp: 74 },
+    { day: "Tomorrow", condition: "Sunny", highTemp: 84, lowTemp: 76 },
+    { day: "Saturday", condition: "Scattered Showers", highTemp: 80, lowTemp: 72 }
+  ]
+};
+```
+
+### `/api/tides` - NOAA Tides Data
+```typescript
+const mockTideData = {
+  current: {
+    status: "Rising",
+    level: 1.2,
+    percentage: 65
+  },
+  upcoming: [
+    { type: "High", time: "2:34 PM", timeLabel: "in 2h 15m", height: "2.1" },
+    { type: "Low", time: "8:45 PM", timeLabel: "in 8h 26m", height: "0.3" },
+    { type: "High", time: "2:12 AM", timeLabel: "tomorrow", height: "1.9" },
+    { type: "Low", time: "8:30 AM", timeLabel: "tomorrow", height: "0.5" }
+  ]
+};
+```
+
+### `/api/movies` - Ward Theater Showtimes
+```typescript
+const mockMovieData = {
+  showtimes: [
+    {
+      title: "Avatar: The Way of Water",
+      rating: "PG-13",
+      duration: "3h 12m",
+      genre: "Sci-Fi",
+      times: ["12:00 PM", "3:30 PM", "7:00 PM", "10:30 PM"]
+    },
+    {
+      title: "Top Gun: Maverick",
+      rating: "PG-13", 
+      duration: "2h 11m",
+      genre: "Action",
+      times: ["1:15 PM", "4:45 PM", "8:15 PM"]
+    },
+    {
+      title: "Minions: The Rise of Gru",
+      rating: "PG",
+      duration: "1h 27m", 
+      genre: "Animation",
+      times: ["11:30 AM", "2:00 PM", "4:30 PM", "7:00 PM"]
+    }
+  ]
+};
+```
+
+### `/api/events` - Honolulu Events
+```typescript
+const mockEventData = {
+  upcoming: [
+    {
+      title: "First Friday Art Walk",
+      venue: "Downtown Honolulu",
+      date: "Dec 1",
+      day: "01",
+      time: "6:00 PM",
+      description: "Monthly art gallery walk featuring local artists",
+      price: "Free",
+      priceType: "free"
+    },
+    {
+      title: "Honolulu Marathon",
+      venue: "Ala Moana Park",
+      date: "Dec 10", 
+      day: "10",
+      time: "5:00 AM",
+      description: "Annual international marathon event",
+      price: "$180",
+      priceType: "premium"
+    },
+    {
+      title: "Sunset Beach Concert",
+      venue: "Waikiki Beach",
+      date: "Dec 15",
+      day: "15", 
+      time: "7:30 PM",
+      description: "Live music with ocean views",
+      price: "$25",
+      priceType: "standard"
+    }
+  ]
+};
+```
+
+## 2. Fix Type Definitions
+
+Create `shared/schema.ts`:
+```typescript
+export interface WeatherData {
+  current: {
+    temp: number;
+    condition: string;
+    feelsLike: number;
+    humidity: number;
+    wind: string;
+    pressure: string;
+    uvIndex: number;
+  };
+  forecast: Array<{
+    day: string;
+    condition: string;
+    highTemp: number;
+    lowTemp: number;
+  }>;
+}
+
+export interface TideData {
+  current: {
+    status: string;
+    level: number;
+    percentage: number;
+  };
+  upcoming: Array<{
+    type: string;
+    time: string;
+    timeLabel: string;
+    height: string;
+  }>;
+}
+
+export interface MovieData {
+  showtimes: Array<{
+    title: string;
+    rating: string;
+    duration: string;
+    genre: string;
+    times: string[];
+  }>;
+}
+
+export interface EventData {
+  upcoming: Array<{
+    title: string;
+    venue: string;
+    date: string;
+    day: string;
+    time: string;
+    description: string;
+    price: string;
+    priceType: string;
+  }>;
+}
+```
+
+## 3. Simplify Data Fetching (Remove Redundancy)
+
+**REMOVE** TanStack Query entirely and use only SWR. Update `App.tsx`:
+```typescript
+import { SWRConfig } from 'swr';
+import { ErrorBoundary } from "./components/ErrorBoundary";
+import { Toaster } from "@/components/ui/toaster";
+import Home from "@/pages/home";
+
+const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+  return res.json();
+};
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <SWRConfig 
+        value={{
+          fetcher,
+          onError: (error) => console.error('SWR Error:', error),
+          revalidateOnFocus: false,
+          revalidateOnReconnect: true,
+        }}
+      >
+        <div className="dark">
+          <Toaster />
+          <Home />
+        </div>
+      </SWRConfig>
+    </ErrorBoundary>
+  );
+}
+
+export default App;
+```
+
+## 4. Fix Package.json Dependencies
+
+Update `package.json` to include missing dependencies:
+```json
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swr": "^2.2.4",
+    "lucide-react": "^0.263.1",
+    "wouter": "^3.0.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17", 
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8",
+    "tailwindcss": "^3.3.6",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16",
+    "typescript": "^5.2.2"
+  }
+}
+```
+
+## 5. Create Working Vite Backend (For Development)
+
+Create `vite.config.ts` with API proxy:
+```typescript
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@shared": path.resolve(__dirname, "./shared"),
+    },
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          // Mock API responses for development
+          proxy.on('error', (err, req, res) => {
+            console.log('proxy error', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            console.log('Sending Request:', req.method, req.url);
+          });
+        },
+      },
+    },
+  },
+});
+```
+
+## 6. Create Simple Express Backend (Optional)
+
+Create `server/index.js` for a real backend:
+```javascript
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+// Import mock data from above
+app.get('/api/weather', (req, res) => res.json(mockWeatherData));
+app.get('/api/tides', (req, res) => res.json(mockTideData));
+app.get('/api/movies', (req, res) => res.json(mockMovieData));
+app.get('/api/events', (req, res) => res.json(mockEventData));
+
+app.listen(3001, () => {
+  console.log('API server running on port 3001');
+});
+```
+
+## 7. Fix Import Paths
+
+Update all hook files to use correct import paths:
+```typescript
+// In useWeather.ts, useTides.ts, etc.
+import type { WeatherData } from '../shared/schema';
+// Instead of: import type { WeatherData } from '@shared/schema';
+```
+
+## 8. Environment Setup
+
+Create `.env.example`:
+```
+OPENWEATHER_API_KEY=your_openweather_api_key_here
+NOAA_API_TOKEN=your_noaa_token_here
+EVENTBRITE_TOKEN=your_eventbrite_token_here
+```
+
+## 9. Tailwind Config Fix
+
+Ensure `tailwind.config.js` exists:
+```javascript
+module.exports = {
+  darkMode: ["class"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1e293b',
+        secondary: '#0f766e', 
+        accent: '#0369a1',
+        background: '#0f172a',
+        card: '#1e293b',
+        'text-primary': '#f8fafc',
+        'text-secondary': '#cbd5e1',
+        success: '#059669',
+        warning: '#d97706',
+        error: '#dc2626'
+      },
+    }
+  },
+  plugins: [],
+}
+```
+
+## 10. Quick Start Instructions
+
+1. Remove `@tanstack/react-query` and `queryClient.ts`
+2. Implement the mock API endpoints above
+3. Fix all import paths for shared types
+4. Update package.json dependencies
+5. Run `npm install && npm run dev`
+
+This will give you a working Honolulu dashboard with realistic mock data that demonstrates all the UI components and data flow properly. Once the basic functionality works, you can then implement real API integrations with OpenWeatherMap, NOAA, etc.
+
+**Priority**: Start with the mock API implementation first - this is the critical blocker preventing the app from loading any data.

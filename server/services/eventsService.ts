@@ -11,7 +11,7 @@ export async function getEventsData(): Promise<EventData> {
   try {
     // Search for events in Honolulu area
     const response = await fetch(
-      `https://www.eventbriteapi.com/v3/events/search/?location.address=Honolulu,HI&location.within=25mi&expand=venue&sort_by=date&token=${EVENTBRITE_TOKEN}`,
+      `https://www.eventbriteapi.com/v3/events/search/?location.address=Honolulu,HI&location.within=25mi&expand=venue&sort_by=date`,
       {
         headers: {
           'Authorization': `Bearer ${EVENTBRITE_TOKEN}`,
