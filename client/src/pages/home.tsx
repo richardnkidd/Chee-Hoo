@@ -102,12 +102,12 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold gradient-text">Kamaʻāina Compass</h1>
-                <p className="text-sm text-secondary">Real-time island rhythms</p>
+                <h1 className="text-h1 font-display gradient-text">Kamaʻāina Compass</h1>
+                <p className="text-small text-secondary">Real-time island rhythms</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-secondary hidden sm:inline">
+              <span className="text-small text-secondary hidden sm:inline">
                 Updated {lastUpdated}
               </span>
               <button 

@@ -47,21 +47,21 @@ export const TideCard: React.FC = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-emphasis-high">Tides</h2>
-            <p className="text-sm text-emphasis-medium">Honolulu Harbor</p>
+            <h2 className="text-h2 font-display text-emphasis-high">Tides</h2>
+            <p className="text-small text-emphasis-medium">Honolulu Harbor</p>
           </div>
         </div>
         <div className="text-right">
-          <p className="text-sm text-emphasis-low">Current</p>
-          <p className="text-lg font-semibold gradient-text">{tides.current.status}</p>
+          <p className="text-small text-emphasis-low">Current</p>
+          <p className="text-body font-semibold gradient-text">{tides.current.status}</p>
         </div>
       </div>
 
       {/* Current Tide Visual */}
       <div className="glass rounded-2xl p-4 mb-6">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-sm text-emphasis-medium">Tide Level</span>
-          <span className="text-base font-semibold text-emphasis-high">{tides.current.level} ft</span>
+          <span className="text-small text-emphasis-medium">Tide Level</span>
+          <span className="text-body font-semibold text-emphasis-high">{tides.current.level} ft</span>
         </div>
 
         <div className="relative">

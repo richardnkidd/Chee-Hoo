@@ -56,8 +56,8 @@ export const WeatherCard: React.FC = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-emphasis-high">Weather</h2>
-            <p className="text-sm text-emphasis-medium">Honolulu, HI</p>
+            <h2 className="text-h2 font-display text-emphasis-high">Weather</h2>
+            <p className="text-small text-emphasis-medium">Honolulu, HI</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
@@ -73,38 +73,38 @@ export const WeatherCard: React.FC = () => {
             <span className="text-6xl font-light gradient-text" style={{ fontSize: '48px' }}>{weather.current.temp}°</span>
             <span className="text-xl text-emphasis-medium">F</span>
           </div>
-          <p className="text-lg text-emphasis-high mt-1">{weather.current.condition}</p>
-          <p className="text-sm text-emphasis-low mt-1">Feels like {weather.current.feelsLike}°F</p>
+          <p className="text-body text-emphasis-high mt-1">{weather.current.condition}</p>
+          <p className="text-small text-emphasis-low mt-1">Feels like {weather.current.feelsLike}°F</p>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <Droplets className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
-              <p className="text-xs text-muted">Humidity</p>
+              <p className="text-caption text-emphasis-low">Humidity</p>
             </div>
-            <p className="text-lg font-medium text-primary">{weather.current.humidity}%</p>
+            <p className="text-body font-medium text-emphasis-high">{weather.current.humidity}%</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <Sun className="w-4 h-4 text-[rgb(var(--tropical-sand))]" />
-              <p className="text-xs text-muted">UV Index</p>
+              <p className="text-caption text-emphasis-low">UV Index</p>
             </div>
-            <p className="text-lg font-medium text-primary">{weather.current.uvIndex}</p>
+            <p className="text-body font-medium text-emphasis-high">{weather.current.uvIndex}</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <Wind className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
-              <p className="text-xs text-muted">Wind</p>
+              <p className="text-caption text-emphasis-low">Wind</p>
             </div>
-            <p className="text-lg font-medium text-primary">{weather.current.wind}</p>
+            <p className="text-body font-medium text-emphasis-high">{weather.current.wind}</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <div className="w-4 h-4 rounded-full bg-[rgb(var(--tropical-ocean-light)/0.3)]"></div>
-              <p className="text-xs text-muted">Pressure</p>
+              <p className="text-caption text-emphasis-low">Pressure</p>
             </div>
-            <p className="text-lg font-medium text-primary">{weather.current.pressure}</p>
+            <p className="text-body font-medium text-emphasis-high">{weather.current.pressure}</p>
           </div>
         </div>
       </div>

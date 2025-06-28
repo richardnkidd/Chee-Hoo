@@ -71,8 +71,28 @@ export default {
         '4xl': '2rem',
       },
       fontFamily: {
-        sans: ['Outfit', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Sora', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Outfit', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        display: ['Sora', 'sans-serif'],
+      },
+      fontSize: {
+        'caption': ['0.625rem', { lineHeight: '1.4', fontWeight: '400' }], // 10px
+        'small': ['0.75rem', { lineHeight: '1.5', fontWeight: '400' }],    // 12px
+        'h3': ['0.875rem', { lineHeight: '1.4', fontWeight: '500' }],      // 14px
+        'body': ['1rem', { lineHeight: '1.6', fontWeight: '400' }],        // 16px
+        'h2': ['1.25rem', { lineHeight: '1.3', fontWeight: '600' }],       // 20px
+        'h1': ['1.5rem', { lineHeight: '1.2', fontWeight: '700' }],        // 24px
+      },
+      fontWeight: {
+        '300': '300',
+        '400': '400',
+        '500': '500',
+        '600': '600',
+        '700': '700',
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
       },
       keyframes: {
         "accordion-down": {

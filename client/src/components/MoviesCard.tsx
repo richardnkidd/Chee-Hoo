@@ -58,8 +58,8 @@ export const MoviesCard: React.FC = () => {
             <Film className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-emphasis-high">Movies</h2>
-            <p className="text-sm text-emphasis-medium">Ward Theater</p>
+            <h2 className="text-h2 font-display text-emphasis-high">Movies</h2>
+            <p className="text-small text-emphasis-medium">Ward Theater</p>
           </div>
         </div>
       </div>
@@ -74,8 +74,8 @@ export const MoviesCard: React.FC = () => {
                 </div>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-emphasis-high truncate">{movie.title}</h3>
-                <p className="text-xs text-emphasis-low mb-2">
+                <h3 className="text-h3 font-medium text-emphasis-high truncate">{movie.title}</h3>
+                <p className="text-caption text-emphasis-low mb-2">
                   {movie.rating} • {movie.duration} • {movie.genre}
                 </p>
                 <div className="flex flex-wrap gap-1">
