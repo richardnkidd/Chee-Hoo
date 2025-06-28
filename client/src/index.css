@@ -73,6 +73,7 @@
   --destructive: rgb(var(--tropical-volcanic)); /* Error/Destructive: Volcanic (#8B2323) */
   --destructive-foreground: rgb(var(--tropical-mist));
   --ring: rgb(var(--tropical-ocean-light) / 0.5);
+  --text-secondary: #6B6B68; /* 60% grey */
   --radius: 1.25rem;
 }
 
@@ -177,10 +178,17 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
   
-  .text-muted { 
-    color: rgb(var(--tropical-sand) / 0.9); 
+  .text-muted {
+    color: rgb(var(--tropical-sand) / 0.9);
     opacity: 1;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Secondary text for small, meta, and caption elements */
+  small,
+  .meta,
+  .caption {
+    color: var(--text-secondary);
   }
 }
 
