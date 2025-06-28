@@ -87,11 +87,8 @@
   body {
     @apply font-sans antialiased;
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg,
-      rgb(25, 30, 25) 0%,
-      rgb(45, 45, 43) 50%,
-      rgb(15, 43, 62) 100%) !important;
-    /* Design Specification: Deep green to ocean gradient - Force Applied */
+    background: linear-gradient(180deg, var(--tropical-mist) 0%, var(--tropical-sand) 100%) !important;
+    /* Design Specification: Lighter mist to sand gradient - Force Applied */
     background-color: rgb(25, 30, 25) !important;
     background-attachment: fixed;
     color: rgb(245, 243, 240) !important; /* Text Primary: Mist (#F5F3F0) */
