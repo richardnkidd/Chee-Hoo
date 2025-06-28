@@ -1,4 +1,6 @@
 import express from "express";
+import { promises as fs } from "fs";
+import path from "path";
 
 export const surfRouter = express.Router();
 
@@ -22,7 +24,7 @@ surfRouter.get("/", async (req, res) => {
 
     const data = await response.json();
     // Pick the first hour (index 0).  API always starts at the present hour.
-    res.json({
+    return res.json({
       time: data.hourly.time[0],
       waveHeight: data.hourly.wave_height[0],
       swellHeight: data.hourly.swell_wave_height[0],
@@ -33,6 +35,21 @@ surfRouter.get("/", async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(502).json({ error: "Surf data unavailable" });
+    try {
+      const samplePath = path.resolve(import.meta.dirname, "../sample/surf-sample.json");
+      const text = await fs.readFile(samplePath, "utf-8");
+      const data = JSON.parse(text);
+      return res.json({
+        time: data.hourly.time[0],
+        waveHeight: data.hourly.wave_height[0],
+        swellHeight: data.hourly.swell_wave_height[0],
+        swellDir: data.hourly.swell_wave_direction[0],
+        swellPeriod: data.hourly.swell_wave_period[0],
+        windSpeed: data.hourly.wind_speed_10m[0],
+        windDir: data.hourly.wind_direction_10m[0],
+      });
+    } catch {
+      res.status(502).json({ error: "Surf data unavailable" });
+    }
   }
 });
