@@ -33,10 +33,12 @@
 
       body {
         margin: 0;
-        background: linear-gradient(135deg, 
-          rgb(var(--tropical-deep-green)) 0%, 
-          rgb(var(--tropical-stone) / 0.9) 50%, 
+        background: linear-gradient(135deg,
+          rgb(var(--tropical-deep-green)) 0%,
+          rgb(var(--tropical-stone) / 0.9) 50%,
           rgb(var(--tropical-ocean-deep)) 100%);
+        /* Fallback solid color for readability */
+        background-color: #121212;
         background-attachment: fixed;
         color: rgb(var(--tropical-mist));
         font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
