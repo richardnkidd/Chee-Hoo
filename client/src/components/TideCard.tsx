@@ -93,7 +93,7 @@ export const TideCard: React.FC = () => {
       <div className="space-y-3">
         <h3 className="text-sm font-medium text-secondary mb-3">Next Tides</h3>
         {tides.upcoming.slice(0, 4).map((tide, index) => (
-          <div key={index} className="glass rounded-2xl p-4 hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
+          <div key={index} className="glass rounded-2xl p-4 min-h-12 hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
