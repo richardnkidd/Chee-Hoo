@@ -15,8 +15,8 @@ export const WeatherCard: React.FC = () => {
   if (error) {
     return (
       <div className="text-center py-8">
-        <div className="w-16 h-16 rounded-2xl bg-[rgb(var(--tropical-volcanic)/0.1)] flex items-center justify-center mx-auto mb-4">
-          <CloudRain className="w-8 h-8 text-[rgb(var(--tropical-volcanic))]" />
+        <div className="w-16 h-16 rounded-2xl bg-[#8B2323]/10 flex items-center justify-center mx-auto mb-4">
+          <CloudRain className="w-8 h-8 text-[#8B2323]" />
         </div>
         <p className="text-base font-medium text-primary">Weather Unavailable</p>
         <p className="text-sm text-muted mt-1">Unable to fetch weather data</p>
@@ -28,15 +28,15 @@ export const WeatherCard: React.FC = () => {
     return (
       <div className="animate-pulse">
         <div className="flex items-center space-x-4 mb-6">
-          <div className="w-12 h-12 bg-[rgb(var(--tropical-stone)/0.3)] rounded-2xl"></div>
+          <div className="w-12 h-12 bg-[#2D2D2B]/30 rounded-2xl"></div>
           <div className="space-y-2">
-            <div className="h-5 bg-[rgb(var(--tropical-stone)/0.3)] rounded-xl w-24"></div>
-            <div className="h-4 bg-[rgb(var(--tropical-stone)/0.2)] rounded-xl w-32"></div>
+            <div className="h-5 bg-[#2D2D2B]/30 rounded-xl w-24"></div>
+            <div className="h-4 bg-[#2D2D2B]/20 rounded-xl w-32"></div>
           </div>
         </div>
         <div className="space-y-3">
-          <div className="h-12 bg-[rgb(var(--tropical-stone)/0.3)] rounded-2xl w-40"></div>
-          <div className="h-4 bg-[rgb(var(--tropical-stone)/0.2)] rounded-xl w-3/4"></div>
+          <div className="h-12 bg-[#2D2D2B]/30 rounded-2xl w-40"></div>
+          <div className="h-4 bg-[#2D2D2B]/20 rounded-xl w-3/4"></div>
         </div>
       </div>
     );
@@ -51,7 +51,7 @@ export const WeatherCard: React.FC = () => {
         <div className="flex items-center space-x-4">
           <div className="relative">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--tropical-ocean))] to-[rgb(var(--tropical-ocean-light))]"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#214263] to-[#407B9E]"></div>
               <WeatherIcon className="w-8 h-8 text-white relative z-10" style={{ width: '32px', height: '32px' }} />
             </div>
           </div>
@@ -80,21 +80,21 @@ export const WeatherCard: React.FC = () => {
         <div className="grid grid-cols-2 gap-3">
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
-              <Droplets className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
+              <Droplets className="w-4 h-4 text-[#407B9E]" />
               <p className="text-caption text-emphasis-low">Humidity</p>
             </div>
             <p className="text-body font-medium text-emphasis-high">{weather.current.humidity}%</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
-              <Sun className="w-4 h-4 text-[rgb(var(--tropical-sand))]" />
+              <Sun className="w-4 h-4 text-[#EADDCA]" />
               <p className="text-caption text-emphasis-low">UV Index</p>
             </div>
             <p className="text-body font-medium text-emphasis-high">{weather.current.uvIndex}</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
-              <Wind className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
+              <Wind className="w-4 h-4 text-[#407B9E]" />
               <p className="text-caption text-emphasis-low">Wind</p>
             </div>
             <p className="text-body font-medium text-emphasis-high">{weather.current.wind}</p>

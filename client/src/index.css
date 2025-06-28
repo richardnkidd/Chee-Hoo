@@ -15,6 +15,27 @@
   --tropical-volcanic: 139, 35, 35; /* #8B2323 - Lava red */
   --tropical-stone: 45, 45, 43; /* #2D2D2B - Dark grey/charcoal */
   --tropical-mist: 245, 243, 240; /* #F5F3F0 - Off-white */
+  
+  /* Map semantic variables to design specification colors */
+  --background: 25, 30, 25; /* Deep green */
+  --foreground: 245, 243, 240; /* Mist */
+  --muted: 45, 45, 43; /* Stone */
+  --muted-foreground: 234, 221, 202; /* Sand */
+  --popover: 45, 45, 43; /* Stone */
+  --popover-foreground: 245, 243, 240; /* Mist */
+  --card: 45, 45, 43; /* Stone */
+  --card-foreground: 245, 243, 240; /* Mist */
+  --border: 67, 84, 67; /* Sage */
+  --input: 67, 84, 67; /* Sage */
+  --primary: 64, 123, 158; /* Ocean light */
+  --primary-foreground: 245, 243, 240; /* Mist */
+  --secondary: 67, 84, 67; /* Sage */
+  --secondary-foreground: 245, 243, 240; /* Mist */
+  --accent: 33, 66, 99; /* Ocean */
+  --accent-foreground: 245, 243, 240; /* Mist */
+  --destructive: 139, 35, 35; /* Volcanic */
+  --destructive-foreground: 245, 243, 240; /* Mist */
+  --ring: 64, 123, 158; /* Ocean light */
 
   /* Design System Shadows - Design Specification Exact */
   --shadow-sm: 0 2px 8px rgb(0, 0, 0, 0.1);
@@ -167,18 +188,18 @@
 }
 
 @layer components {
-  /* Kamaʻāina Compass Card System - Design Specification Exact */
+  /* Kamaʻāina Compass Card System - Direct Hex Colors */
   .tropical-card {
     border-radius: 1.5rem;
     background: linear-gradient(135deg, 
-      rgb(var(--tropical-stone) / 0.92) 0%,
-      rgb(var(--tropical-stone) / 0.98) 100%);
+      rgba(45, 45, 43, 0.92) 0%,
+      rgba(45, 45, 43, 0.98) 100%) !important;
     backdrop-filter: blur(12px);
-    border: 1px solid rgb(var(--tropical-sage) / 0.3);
+    border: 1px solid rgba(67, 84, 67, 0.3) !important;
     box-shadow: 
-      0 8px 32px rgb(var(--tropical-deep-green) / 0.4),
-      inset 0 1px 0 rgb(var(--tropical-sand) / 0.15),
-      0 0 0 1px rgb(0, 0, 0, 0.1);
+      0 8px 32px rgba(25, 30, 25, 0.4),
+      inset 0 1px 0 rgba(234, 221, 202, 0.15),
+      0 0 0 1px rgba(0, 0, 0, 0.1) !important;
     transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
@@ -278,23 +299,23 @@
     animation: pulse 2s ease-in-out infinite;
   }
 
-  /* Kamaʻāina Compass Glass Effects - Design Specification Exact */
+  /* Glass Effects - Direct Hex Colors */
   .glass {
-    background: rgb(var(--tropical-stone) / 0.85);
+    background: rgba(45, 45, 43, 0.85) !important; /* Stone #2D2D2B */
     backdrop-filter: blur(12px);
-    border: 1px solid rgb(var(--tropical-sand) / 0.3);
+    border: 1px solid rgba(234, 221, 202, 0.3) !important; /* Sand #EADDCA */
     box-shadow: 
-      0 4px 16px rgb(0, 0, 0, 0.2),
-      inset 0 1px 0 rgb(var(--tropical-sand) / 0.15);
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(234, 221, 202, 0.15);
   }
 
   .glass-enhanced {
-    background: rgb(var(--tropical-stone) / 0.9);
+    background: rgba(45, 45, 43, 0.9) !important; /* Stone #2D2D2B */
     backdrop-filter: blur(16px);
-    border: 1px solid rgb(var(--tropical-sand) / 0.3);
+    border: 1px solid rgba(234, 221, 202, 0.3) !important; /* Sand #EADDCA */
     box-shadow: 
-      0 4px 16px rgb(0, 0, 0, 0.2),
-      inset 0 1px 0 rgb(var(--tropical-sand) / 0.1);
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(234, 221, 202, 0.1);
   }
 
   /* Text Emphasis Classes - Design Specification Compliant */

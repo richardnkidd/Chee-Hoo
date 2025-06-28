@@ -98,7 +98,7 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--tropical-ocean))] to-[rgb(var(--tropical-ocean-light))] opacity-90"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#214263] to-[#407B9E] opacity-90"></div>
                   <Waves className="w-6 h-6 text-white relative z-10 animate-wave" />
                 </div>
               </div>
@@ -144,19 +144,19 @@ export default function Home() {
         </div>
 
         {/* Decorative elements */}
-        <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-gradient-to-br from-[rgb(var(--tropical-ocean)/0.1)] to-transparent blur-3xl"></div>
-        <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-gradient-to-br from-[rgb(var(--tropical-sage)/0.1)] to-transparent blur-3xl"></div>
+        <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-gradient-to-br from-[#214263]/10 to-transparent blur-3xl"></div>
+        <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-gradient-to-br from-[#435443]/10 to-transparent blur-3xl"></div>
       </main>
 
       {/* Offline Indicator */}
       {!isOnline && (
         <div className="fixed bottom-6 left-6 right-6 max-w-md mx-auto tropical-card p-4 flex items-center space-x-3 animate-slide-up">
-          <div className="w-10 h-10 rounded-full bg-[rgb(var(--tropical-volcanic)/0.2)] flex items-center justify-center">
-            <WifiOff className="w-5 h-5 text-[rgb(var(--tropical-volcanic))]" />
+          <div className="w-10 h-10 rounded-full bg-[#8B2323]/20 flex items-center justify-center">
+            <WifiOff className="w-5 h-5 text-[#8B2323]" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-[rgb(var(--tropical-sand))]">You're offline</p>
-            <p className="text-xs text-[rgb(var(--tropical-sand)/0.7)]">Showing cached data from your last visit</p>
+            <p className="text-sm font-semibold text-[#EADDCA]">You're offline</p>
+            <p className="text-xs text-[#EADDCA]/70">Showing cached data from your last visit</p>
           </div>
         </div>
       )}
