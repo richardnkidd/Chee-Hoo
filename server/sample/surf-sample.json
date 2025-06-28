@@ -1,0 +1,11 @@
+{
+  "hourly": {
+    "time": ["2025-01-01T00:00"],
+    "wave_height": [3.5],
+    "swell_wave_height": [3.0],
+    "swell_wave_direction": [120],
+    "swell_wave_period": [13.0],
+    "wind_speed_10m": [10.5],
+    "wind_direction_10m": [90]
+  }
+}
