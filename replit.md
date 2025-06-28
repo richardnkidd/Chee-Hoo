@@ -1,0 +1,114 @@
+# replit.md
+
+## Overview
+
+This is a React-based web application that provides real-time information about Honolulu, Hawaii. The application displays weather conditions, tide data, movie showtimes, and local events in a modern, mobile-first dashboard interface. It's built as a full-stack application with Express.js backend and React frontend, optimized for deployment on Replit.
+
+## System Architecture
+
+### Frontend Architecture
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite for fast development and optimized builds
+- **Styling**: Tailwind CSS with dark theme and custom Honolulu color palette
+- **UI Components**: Radix UI primitives with shadcn/ui component system
+- **State Management**: SWR for data fetching and caching, React Query for additional query management
+- **Routing**: Wouter for lightweight client-side routing
+
+### Backend Architecture
+- **Runtime**: Node.js with Express.js server
+- **API Design**: RESTful endpoints serving JSON data
+- **Data Fetching**: External API integrations for real-time data
+- **Error Handling**: Centralized error handling with structured error responses
+- **Development**: Hot module replacement with Vite middleware integration
+
+### Data Flow
+1. Frontend components make API requests through SWR hooks
+2. Express server routes handle requests and call appropriate service functions
+3. Service functions fetch data from external APIs (weather, tides, events, movies)
+4. Data is processed, cached, and returned to the frontend
+5. Frontend displays data with loading states and error handling
+
+## Key Components
+
+### Data Services
+- **Weather Service**: Integrates with OpenWeatherMap API for current conditions and forecasts
+- **Tides Service**: Uses NOAA API for tide predictions and current water levels
+- **Movies Service**: Web scraping for local theater showtimes
+- **Events Service**: Eventbrite API integration for local events
+
+### Frontend Components
+- **WeatherCard**: Displays current weather and 3-day forecast
+- **TideCard**: Shows current tide status and upcoming tide times
+- **MoviesCard**: Lists movie showtimes at local theaters
+- **EventsCard**: Displays upcoming local events with pricing
+
+### UI Features
+- **Responsive Design**: Mobile-first approach with desktop optimization
+- **Dark Theme**: Custom Honolulu-inspired color palette
+- **Real-time Updates**: Automatic data refreshing with configurable intervals
+- **Offline Support**: Cached data display when network is unavailable
+- **Error Boundaries**: Graceful error handling and user feedback
+
+## Data Storage Solutions
+
+### Database Configuration
+- **ORM**: Drizzle ORM with PostgreSQL dialect
+- **Schema**: User management with extensible design
+- **Migrations**: Automated database schema management
+- **Environment**: Database URL configuration for Neon/PostgreSQL
+
+### Caching Strategy
+- **SWR**: Client-side caching with automatic revalidation
+- **Refresh Intervals**: Optimized based on data type (weather: 15min, tides: 30min, movies: 24hr, events: 6hr)
+- **Error Recovery**: Fallback to cached data on API failures
+
+## External Dependencies
+
+### Required API Keys
+- **OpenWeatherMap**: Weather data (current and forecast)
+- **Eventbrite**: Local events data
+- **NOAA**: Tide predictions (public API, no key required)
+
+### Core Libraries
+- **React Ecosystem**: React, React DOM, React Query, SWR
+- **UI Framework**: Radix UI, Tailwind CSS, Lucide React icons
+- **Backend**: Express, Axios, Cheerio (web scraping)
+- **Database**: Drizzle ORM, Neon Database
+- **Development**: Vite, TypeScript, ESLint
+
+### Data Sources
+- OpenWeatherMap API for weather data
+- NOAA Tides and Currents API for tide information
+- Eventbrite API for local events
+- Web scraping for movie theater showtimes
+
+## Deployment Strategy
+
+### Build Process
+1. **Development**: `npm run dev` - Vite dev server with HMR
+2. **Build**: `npm run build` - Vite frontend build + esbuild server bundle
+3. **Production**: `npm start` - Serves built application
+
+### Environment Configuration
+- **Database**: PostgreSQL via DATABASE_URL environment variable
+- **APIs**: API keys configured through environment variables
+- **Deployment**: Optimized for Replit with `.replit` configuration
+
+### Production Considerations
+- Static asset serving through Express
+- Environment-specific error handling
+- Database connection pooling
+- API rate limiting considerations
+
+## Changelog
+
+```
+Changelog:
+- June 28, 2025. Initial setup
+```
+
+## User Preferences
+
+```
+Preferred communication style: Simple, everyday language.
+```

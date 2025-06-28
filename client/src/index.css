@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(213, 13%, 98%);
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 47%, 11%);
+  --popover-foreground: hsl(213, 13%, 98%);
+  --card: hsl(217, 33%, 17%);
+  --card-foreground: hsl(213, 13%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(174, 100%, 23%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(207, 90%, 54%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(217, 33%, 17%);
+  --radius: 0.75rem;
+  
+  /* Custom Honolulu palette */
+  --honolulu-primary: hsl(215, 28%, 17%);
+  --honolulu-secondary: hsl(174, 100%, 23%);
+  --honolulu-accent: hsl(207, 90%, 54%);
+  --honolulu-background: hsl(222, 84%, 5%);
+  --honolulu-card: hsl(215, 28%, 17%);
+  --honolulu-text-primary: hsl(213, 13%, 98%);
+  --honolulu-text-secondary: hsl(215, 16%, 82%);
+  --honolulu-success: hsl(158, 100%, 20%);
+  --honolulu-warning: hsl(25, 95%, 45%);
+  --honolulu-error: hsl(0, 73%, 41%);
+}
+
+.dark {
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(213, 13%, 98%);
+  --muted: hsl(217, 33%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 47%, 11%);
+  --popover-foreground: hsl(213, 13%, 98%);
+  --card: hsl(217, 33%, 17%);
+  --card-foreground: hsl(213, 13%, 98%);
+  --border: hsl(217, 33%, 17%);
+  --input: hsl(217, 33%, 17%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(217, 33%, 17%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(217, 33%, 17%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(217, 33%, 17%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--honolulu-card));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground));
+}
