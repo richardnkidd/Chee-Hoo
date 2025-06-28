@@ -1,0 +1,286 @@
+# Kamaʻāina Compass - Design Specification Sheet
+
+## 1. Design Overview
+
+### Project Description
+Kamaʻāina Compass is a real-time information dashboard providing weather, tides, events, and movie showtimes for Honolulu, Hawaii. The design embodies a modern tropical aesthetic with sophisticated color palettes inspired by Hawaiian landscapes.
+
+### Design Philosophy
+- **Organic Shapes**: Rounded corners and flowing transitions reflect natural Hawaiian forms
+- **Depth & Layering**: Glass morphism effects create depth while maintaining readability
+- **Living Interface**: Subtle animations bring the interface to life, mimicking ocean rhythms
+- **Accessibility First**: High contrast ratios and clear typography ensure universal usability
+
+## 2. Color Palette
+
+### Primary Colors
+```css
+--tropical-deep-green: rgb(25, 30, 25)      /* #191E19 - Deep forest green */
+--tropical-sage: rgb(67, 84, 67)            /* #435443 - Sage green */
+--tropical-ocean-deep: rgb(15, 43, 62)      /* #0F2B3E - Deep ocean blue */
+--tropical-ocean: rgb(33, 66, 99)           /* #214263 - Ocean blue */
+--tropical-ocean-light: rgb(64, 123, 158)   /* #407B9E - Light ocean */
+--tropical-sand: rgb(234, 221, 202)         /* #EADDCA - Light tan/sand */
+--tropical-volcanic: rgb(139, 35, 35)       /* #8B2323 - Lava red */
+--tropical-stone: rgb(45, 45, 43)           /* #2D2D2B - Dark grey/charcoal */
+--tropical-mist: rgb(245, 243, 240)         /* #F5F3F0 - Off-white */
+```
+
+### Semantic Colors
+- **Background**: Deep green to ocean gradient
+- **Surface**: Stone with varying opacity (80-98%)
+- **Text Primary**: Mist (#F5F3F0)
+- **Text Secondary**: Sand (#EADDCA)
+- **Accent**: Ocean light (#407B9E)
+- **Error/Destructive**: Volcanic (#8B2323)
+
+### Opacity Guidelines
+- **Cards**: 92-98% opacity
+- **Glass Effects**: 85-90% opacity
+- **Borders**: 20-30% opacity
+- **Overlays**: 10-20% opacity
+
+## 3. Typography
+
+### Font Stack
+```css
+font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+```
+
+### Headers (Sora Font)
+```css
+font-family: 'Sora', sans-serif;
+```
+
+### Type Scale
+| Element | Size | Weight | Line Height | Usage |
+|---------|------|--------|-------------|--------|
+| H1 | 24px (1.5rem) | 700 | 1.2 | Page title |
+| H2 | 20px (1.25rem) | 600 | 1.3 | Card headers |
+| H3 | 14px (0.875rem) | 500 | 1.4 | Section titles |
+| Body | 16px (1rem) | 400 | 1.6 | Standard text |
+| Small | 12px (0.75rem) | 400 | 1.5 | Metadata |
+| Caption | 10px (0.625rem) | 400 | 1.4 | Timestamps |
+
+### Text Emphasis Classes
+- `.text-emphasis-high`: 100% opacity, weight 600
+- `.text-emphasis-medium`: 95% opacity, weight 500
+- `.text-emphasis-low`: 85% opacity, weight 400
+
+## 4. Component Library
+
+### Cards
+```css
+.tropical-card {
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, 
+    rgb(45, 45, 43, 0.92) 0%,
+    rgb(45, 45, 43, 0.98) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(67, 84, 67, 0.3);
+  box-shadow: 
+    0 8px 32px rgb(25, 30, 25, 0.4),
+    inset 0 1px 0 rgb(234, 221, 202, 0.15),
+    0 0 0 1px rgb(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+```
+
+### Buttons
+```css
+.tropical-button {
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, 
+    rgb(33, 66, 99) 0%, 
+    rgb(64, 123, 158) 100%);
+  color: rgb(245, 243, 240);
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+```
+
+### Glass Effects
+```css
+.glass-enhanced {
+  background: rgb(45, 45, 43, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(234, 221, 202, 0.3);
+  box-shadow: 
+    0 4px 16px rgb(0, 0, 0, 0.2),
+    inset 0 1px 0 rgb(255, 255, 255, 0.1);
+}
+```
+
+## 5. Layout System
+
+### Grid System
+- **Container Max Width**: 1280px (7xl)
+- **Grid Columns**: 1 (mobile), 2 (desktop)
+- **Gap**: 24px (mobile), 32px (desktop)
+- **Padding**: 16px (mobile), 24px (tablet), 32px (desktop)
+
+### Spacing Scale
+```
+4px   - 0.25rem  - xs
+8px   - 0.5rem   - sm
+12px  - 0.75rem  - md
+16px  - 1rem     - base
+24px  - 1.5rem   - lg
+32px  - 2rem     - xl
+48px  - 3rem     - 2xl
+64px  - 4rem     - 3xl
+```
+
+### Border Radius
+```
+0.75rem - sm  (12px)
+1rem    - md  (16px)
+1.25rem - lg  (20px)
+1.5rem  - xl  (24px)
+2rem    - 2xl (32px)
+```
+
+## 6. Animation & Interactions
+
+### Timing Functions
+```css
+transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce */
+transition-timing-function: ease-in-out; /* Standard */
+```
+
+### Animation Durations
+- **Micro**: 200ms (hover states)
+- **Short**: 300ms (transitions)
+- **Medium**: 500ms (fade in)
+- **Long**: 1000ms (complex animations)
+
+### Animation Library
+| Animation | Duration | Description |
+|-----------|----------|-------------|
+| wave | 3s | Gentle wave motion |
+| float | 6s | Vertical floating |
+| float-pattern | 120s | Background pattern movement |
+| shimmer | 2s | Loading shimmer effect |
+| ripple | 600ms | Button click ripple |
+| pulse | 2s | Status indicator pulse |
+| slide-up | 400ms | Element entrance |
+| fade-in | 500ms | Opacity transition |
+
+## 7. Responsive Design
+
+### Breakpoints
+```css
+sm: 640px   /* Mobile landscape */
+md: 768px   /* Tablet */
+lg: 1024px  /* Desktop */
+xl: 1280px  /* Large desktop */
+2xl: 1536px /* Extra large */
+```
+
+### Mobile Considerations
+- **Touch Targets**: Minimum 48x48px
+- **Font Size**: 15px minimum on mobile
+- **Padding**: Increased by 20% on mobile
+- **Single Column**: Below 768px
+- **Simplified Animations**: Reduced on mobile
+
+## 8. Accessibility
+
+### Color Contrast Ratios
+- **Primary Text on Background**: 12.5:1 (AAA)
+- **Secondary Text on Background**: 9.8:1 (AAA)
+- **Text on Cards**: 10.2:1 (AAA)
+- **Interactive Elements**: 7.5:1 (AAA)
+
+### Focus States
+```css
+*:focus-visible {
+  outline: 2px solid rgb(64, 123, 158);
+  outline-offset: 2px;
+}
+```
+
+### Screen Reader Support
+- Semantic HTML structure
+- ARIA labels on interactive elements
+- Descriptive link text
+- Loading state announcements
+
+## 9. Design Tokens
+
+### Shadow System
+```css
+--shadow-sm: 0 2px 8px rgb(0, 0, 0, 0.1);
+--shadow-md: 0 8px 32px rgb(25, 30, 25, 0.3);
+--shadow-lg: 0 12px 40px rgb(25, 30, 25, 0.4);
+--shadow-inner: inset 0 1px 0 rgb(234, 221, 202, 0.15);
+```
+
+### Z-Index Scale
+```css
+--z-base: 0;
+--z-dropdown: 10;
+--z-overlay: 20;
+--z-modal: 30;
+--z-popover: 40;
+--z-header: 50;
+--z-tooltip: 60;
+```
+
+## 10. Component Specifications
+
+### Weather Card
+- **Dimensions**: Full width, auto height
+- **Temperature Display**: 48px font size
+- **Icon Size**: 32px
+- **Grid**: 2 columns for metrics
+- **Update Interval**: 15 minutes
+
+### Tide Card
+- **Progress Bar**: 12px height
+- **Tide Items**: 48px minimum height
+- **Icon Size**: 20px in indicators
+- **Update Interval**: 30 minutes
+
+### Movies Card
+- **Poster Placeholder**: 48x64px
+- **Title**: Truncate with ellipsis
+- **Showtime Pills**: 24px height
+- **Update Interval**: 24 hours
+
+### Events Card
+- **Date Box**: 48x48px
+- **Title**: 2 line maximum
+- **Price Badge**: Inline with padding
+- **Update Interval**: 6 hours
+
+### Header
+- **Height**: 80px (5rem)
+- **Logo Size**: 48x48px
+- **Sticky**: Top 0 with z-50
+- **Background**: Glass enhanced effect
+
+## 11. Implementation Notes
+
+### Performance
+- Lazy load non-critical images
+- Use CSS transforms for animations
+- Minimize re-renders with proper memoization
+- Cache API responses with SWR
+
+### Browser Support
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- CSS Grid and Flexbox required
+- Backdrop filter support recommended
+- Touch event support for mobile
+
+### Future Enhancements
+- Dark/Light mode toggle
+- Custom theme colors
+- Animation preferences
+- Reduced motion support
+- PWA offline capabilities
+
+---

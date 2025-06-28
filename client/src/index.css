@@ -5,16 +5,31 @@
 @tailwind utilities;
 
 :root {
-  /* Tropical Palette - Subtle & Sophisticated */
-  --tropical-deep-green: 25, 30, 25; /* Deep forest green */
-  --tropical-sage: 67, 84, 67; /* Sage green */
-  --tropical-ocean-deep: 15, 43, 62; /* Deep ocean blue */
-  --tropical-ocean: 33, 66, 99; /* Ocean blue */
-  --tropical-ocean-light: 64, 123, 158; /* Light ocean */
-  --tropical-sand: 234, 221, 202; /* Light tan/sand */
-  --tropical-volcanic: 139, 35, 35; /* Lava red */
-  --tropical-stone: 45, 45, 43; /* Dark grey/charcoal */
-  --tropical-mist: 245, 243, 240; /* Off-white */
+  /* Kamaʻāina Compass Design System - Tropical Palette */
+  --tropical-deep-green: 25, 30, 25; /* #191E19 - Deep forest green */
+  --tropical-sage: 67, 84, 67; /* #435443 - Sage green */
+  --tropical-ocean-deep: 15, 43, 62; /* #0F2B3E - Deep ocean blue */
+  --tropical-ocean: 33, 66, 99; /* #214263 - Ocean blue */
+  --tropical-ocean-light: 64, 123, 158; /* #407B9E - Light ocean */
+  --tropical-sand: 234, 221, 202; /* #EADDCA - Light tan/sand */
+  --tropical-volcanic: 139, 35, 35; /* #8B2323 - Lava red */
+  --tropical-stone: 45, 45, 43; /* #2D2D2B - Dark grey/charcoal */
+  --tropical-mist: 245, 243, 240; /* #F5F3F0 - Off-white */
+
+  /* Design System Shadows */
+  --shadow-sm: 0 2px 8px rgb(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 32px rgb(var(--tropical-deep-green), 0.3);
+  --shadow-lg: 0 12px 40px rgb(var(--tropical-deep-green), 0.4);
+  --shadow-inner: inset 0 1px 0 rgb(var(--tropical-sand), 0.15);
+
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-overlay: 20;
+  --z-modal: 30;
+  --z-popover: 40;
+  --z-header: 50;
+  --z-tooltip: 60;
 
   /* Base color mappings */
   --background: rgb(var(--tropical-deep-green));
@@ -110,36 +125,41 @@
 }
 
 @layer components {
-  /* Organic card design */
+  /* Kamaʻāina Compass Card System */
   .tropical-card {
-    @apply rounded-3xl;
+    border-radius: 1.5rem;
     background: linear-gradient(135deg, 
-      rgb(var(--tropical-stone) / 0.85) 0%, 
-      rgb(var(--tropical-stone) / 0.95) 100%);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgb(var(--tropical-sage) / 0.2);
+      rgb(var(--tropical-stone) / 0.92) 0%,
+      rgb(var(--tropical-stone) / 0.98) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgb(var(--tropical-sage) / 0.3);
     box-shadow: 
-      0 8px 32px rgb(var(--tropical-deep-green) / 0.3),
-      inset 0 1px 0 rgb(var(--tropical-sand) / 0.1);
-    transition: all 0.3s ease;
+      var(--shadow-md),
+      var(--shadow-inner),
+      0 0 0 1px rgb(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .tropical-card:hover {
     transform: translateY(-2px);
     box-shadow: 
-      0 12px 40px rgb(var(--tropical-deep-green) / 0.4),
-      inset 0 1px 0 rgb(var(--tropical-sand) / 0.15);
-    border-color: rgb(var(--tropical-ocean-light) / 0.3);
+      var(--shadow-lg),
+      var(--shadow-inner),
+      0 0 0 1px rgb(var(--tropical-ocean-light) / 0.2);
+    border-color: rgb(var(--tropical-ocean-light) / 0.4);
   }
 
-  /* Organic buttons */
+  /* Kamaʻāina Compass Button System */
   .tropical-button {
-    @apply rounded-2xl px-6 py-3 font-medium;
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
     background: linear-gradient(135deg, 
       rgb(var(--tropical-ocean)) 0%, 
       rgb(var(--tropical-ocean-light)) 100%);
     color: rgb(var(--tropical-mist));
-    transition: all 0.3s ease;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
   }
@@ -197,11 +217,52 @@
     animation: pulse 2s ease-in-out infinite;
   }
 
-  /* Improved glass effects for readability */
+  /* Kamaʻāina Compass Glass Effects */
   .glass {
     background: rgb(var(--tropical-stone) / 0.9);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgb(var(--tropical-sand) / 0.2);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgb(var(--tropical-sand) / 0.3);
+    box-shadow: 
+      0 4px 16px rgb(0, 0, 0, 0.2),
+      inset 0 1px 0 rgb(255, 255, 255, 0.1);
+  }
+
+  .glass-enhanced {
+    background: rgb(var(--tropical-stone) / 0.9);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgb(var(--tropical-sand) / 0.3);
+    box-shadow: 
+      0 4px 16px rgb(0, 0, 0, 0.2),
+      inset 0 1px 0 rgb(255, 255, 255, 0.1);
+  }
+
+  /* Typography Emphasis Classes */
+  .text-emphasis-high { 
+    opacity: 1; 
+    font-weight: 600; 
+  }
+  
+  .text-emphasis-medium { 
+    opacity: 0.95; 
+    font-weight: 500; 
+  }
+  
+  .text-emphasis-low { 
+    opacity: 0.85; 
+    font-weight: 400; 
+  }
+
+  /* Accessibility - Focus States */
+  *:focus-visible {
+    outline: 2px solid rgb(var(--tropical-ocean-light));
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* Touch Target Minimum Size */
+  .touch-target {
+    min-width: 48px;
+    min-height: 48px;
   }
 }
 
@@ -209,13 +270,6 @@
   .touch-target {
     min-height: 48px;
     min-width: 48px;
-  }
-
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
   }
 
   .animate-fade-in {

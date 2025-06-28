@@ -62,8 +62,8 @@ export const EventsCard: React.FC = () => {
             <Calendar className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-primary">Events</h2>
-            <p className="text-sm text-secondary">Upcoming in Honolulu</p>
+            <h2 className="text-lg font-semibold text-emphasis-high">Events</h2>
+            <p className="text-sm text-emphasis-medium">Upcoming in Honolulu</p>
           </div>
         </div>
       </div>
@@ -75,15 +75,15 @@ export const EventsCard: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg flex flex-col items-center justify-center">
                   <span className="text-xs font-semibold text-orange-400">{event.date.split(' ')[0]}</span>
-                  <span className="text-sm font-bold text-primary">{event.day}</span>
+                  <span className="text-sm font-bold text-emphasis-high">{event.day}</span>
                 </div>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-primary line-clamp-2">{event.title}</h3>
-                <p className="text-xs text-secondary mb-1">
+                <h3 className="text-sm font-medium text-emphasis-high">{event.title}</h3>
+                <p className="text-xs text-emphasis-medium mb-1">
                   {event.venue} • {event.time}
                 </p>
-                <p className="text-xs text-muted">{event.description}</p>
+                <p className="text-xs text-emphasis-low">{event.description}</p>
               </div>
               <div className="flex-shrink-0">
                 <span className={`px-2 py-1 text-xs rounded-full ${getPriceColor(event.priceType)}`}>

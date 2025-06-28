@@ -58,8 +58,8 @@ export const MoviesCard: React.FC = () => {
             <Film className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-primary">Movies</h2>
-            <p className="text-sm text-secondary">Ward Theater</p>
+            <h2 className="text-lg font-semibold text-emphasis-high">Movies</h2>
+            <p className="text-sm text-emphasis-medium">Ward Theater</p>
           </div>
         </div>
       </div>
@@ -68,17 +68,19 @@ export const MoviesCard: React.FC = () => {
         {movies.showtimes.slice(0, 4).map((movie, index) => (
           <div key={index} className="border-b border-slate-600 last:border-b-0 pb-4 last:pb-0">
             <div className="flex items-start space-x-3">
-              <div className="w-12 h-16 bg-gradient-to-br from-slate-600 to-slate-700 rounded-md flex-shrink-0 flex items-center justify-center">
-                <Image className="w-5 h-5 text-slate-400" />
+              <div className="flex-shrink-0" style={{ width: '48px', height: '64px' }}>
+                <div className="w-full h-full bg-gradient-to-br from-slate-600 to-slate-700 rounded-md flex items-center justify-center">
+                  <Image className="w-5 h-5 text-slate-400" />
+                </div>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-primary truncate">{movie.title}</h3>
-                <p className="text-xs text-muted mb-2">
+                <h3 className="text-sm font-medium text-emphasis-high truncate">{movie.title}</h3>
+                <p className="text-xs text-emphasis-low mb-2">
                   {movie.rating} • {movie.duration} • {movie.genre}
                 </p>
                 <div className="flex flex-wrap gap-1">
                   {movie.times.map((time, timeIndex) => (
-                    <span key={timeIndex} className="px-2 h-6 inline-flex items-center bg-slate-700 rounded text-xs text-primary">
+                    <span key={timeIndex} className="px-2 py-1 bg-slate-700 rounded text-xs text-emphasis-high" style={{ height: '24px', display: 'flex', alignItems: 'center' }}>
                       {time}
                     </span>
                   ))}

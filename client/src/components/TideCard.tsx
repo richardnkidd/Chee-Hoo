@@ -47,12 +47,12 @@ export const TideCard: React.FC = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-primary">Tides</h2>
-            <p className="text-sm text-secondary">Honolulu Harbor</p>
+            <h2 className="text-xl font-semibold text-emphasis-high">Tides</h2>
+            <p className="text-sm text-emphasis-medium">Honolulu Harbor</p>
           </div>
         </div>
         <div className="text-right">
-          <p className="text-sm text-muted">Current</p>
+          <p className="text-sm text-emphasis-low">Current</p>
           <p className="text-lg font-semibold gradient-text">{tides.current.status}</p>
         </div>
       </div>
@@ -60,8 +60,8 @@ export const TideCard: React.FC = () => {
       {/* Current Tide Visual */}
       <div className="glass rounded-2xl p-4 mb-6">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-sm text-secondary">Tide Level</span>
-          <span className="text-base font-semibold text-primary">{tides.current.level} ft</span>
+          <span className="text-sm text-emphasis-medium">Tide Level</span>
+          <span className="text-base font-semibold text-emphasis-high">{tides.current.level} ft</span>
         </div>
 
         <div className="relative">
@@ -93,7 +93,7 @@ export const TideCard: React.FC = () => {
       <div className="space-y-3">
         <h3 className="text-sm font-medium text-secondary mb-3">Next Tides</h3>
         {tides.upcoming.slice(0, 4).map((tide, index) => (
-          <div key={index} className="glass rounded-2xl p-4 min-h-12 hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
+          <div key={index} className="glass rounded-2xl p-4 hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${

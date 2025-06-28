@@ -56,8 +56,8 @@ export const WeatherCard: React.FC = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-primary">Weather</h2>
-            <p className="text-sm text-secondary">Honolulu, HI</p>
+            <h2 className="text-xl font-semibold text-emphasis-high">Weather</h2>
+            <p className="text-sm text-emphasis-medium">Honolulu, HI</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
@@ -70,11 +70,11 @@ export const WeatherCard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
         <div>
           <div className="flex items-baseline space-x-3">
-            <span className="text-5xl font-light gradient-text">{weather.current.temp}°</span>
-            <span className="text-xl text-secondary">F</span>
+            <span className="text-6xl font-light gradient-text" style={{ fontSize: '48px' }}>{weather.current.temp}°</span>
+            <span className="text-xl text-emphasis-medium">F</span>
           </div>
-          <p className="text-lg text-primary mt-1">{weather.current.condition}</p>
-          <p className="text-sm text-muted mt-1">Feels like {weather.current.feelsLike}°F</p>
+          <p className="text-lg text-emphasis-high mt-1">{weather.current.condition}</p>
+          <p className="text-sm text-emphasis-low mt-1">Feels like {weather.current.feelsLike}°F</p>
         </div>
 
         <div className="grid grid-cols-2 gap-3">

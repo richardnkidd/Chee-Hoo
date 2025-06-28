@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a React-based web application that provides real-time information about Honolulu, Hawaii. The application displays weather conditions, tide data, movie showtimes, and local events in a modern, mobile-first dashboard interface. It's built as a full-stack application with Express.js backend and React frontend, optimized for deployment on Replit.
+Kamaʻāina Compass is a React-based web application that provides real-time information about Honolulu, Hawaii. The application displays weather conditions, tide data, movie showtimes, and local events in a modern, mobile-first dashboard interface featuring an enhanced ocean-themed design system. It's built as a full-stack application with Express.js backend and React frontend, optimized for deployment on Replit.
 
 ## System Architecture
 
@@ -104,7 +104,14 @@ This is a React-based web application that provides real-time information about 
 
 ```
 Changelog:
-- June 28, 2025. Initial setup
+- June 28, 2025: Initial setup
+- June 28, 2025: Implemented comprehensive Kamaʻāina Compass design specification
+  - Enhanced glass effect cards with improved opacity (0.85-0.95)
+  - Applied new typography hierarchy with emphasis classes
+  - Updated branding from "Honolulu Live" to "Kamaʻāina Compass"
+  - Improved contrast and accessibility throughout dashboard
+  - Added focus states and touch target guidelines
+  - Optimized movie poster placeholders to 48x64px specifications
 ```
 
 ## User Preferences

@@ -90,7 +90,7 @@ export default function Home() {
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 glass border-b border-white/10">
+      <header className="sticky top-0 glass-enhanced border-b border-white/10" style={{ zIndex: 'var(--z-header)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center space-x-4">
@@ -101,7 +101,7 @@ export default function Home() {
                 </div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold gradient-text">Honolulu Live</h1>
+                <h1 className="text-2xl font-bold gradient-text">Kamaʻāina Compass</h1>
                 <p className="text-sm text-secondary">Real-time island rhythms</p>
               </div>
             </div>
