@@ -12,8 +12,8 @@ export const EventsCard: React.FC = () => {
           <div className="w-12 h-12 bg-destructive/20 rounded-lg flex items-center justify-center mx-auto mb-3">
             <Calendar className="w-6 h-6 text-destructive" />
           </div>
-          <p className="text-sm font-medium text-foreground mb-1">Events Unavailable</p>
-          <p className="text-xs text-muted-foreground">Unable to fetch event data</p>
+          <p className="text-sm font-medium text-primary mb-1">Events Unavailable</p>
+          <p className="text-xs text-muted">Unable to fetch event data</p>
         </div>
       </div>
     );
@@ -62,8 +62,8 @@ export const EventsCard: React.FC = () => {
             <Calendar className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-foreground">Events</h2>
-            <p className="text-sm text-muted-foreground">Upcoming in Honolulu</p>
+            <h2 className="text-lg font-semibold text-primary">Events</h2>
+            <p className="text-sm text-secondary">Upcoming in Honolulu</p>
           </div>
         </div>
       </div>
@@ -75,15 +75,15 @@ export const EventsCard: React.FC = () => {
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg flex flex-col items-center justify-center">
                   <span className="text-xs font-semibold text-orange-400">{event.date.split(' ')[0]}</span>
-                  <span className="text-sm font-bold text-foreground">{event.day}</span>
+                  <span className="text-sm font-bold text-primary">{event.day}</span>
                 </div>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-foreground">{event.title}</h3>
-                <p className="text-xs text-muted-foreground mb-1">
+                <h3 className="text-sm font-medium text-primary">{event.title}</h3>
+                <p className="text-xs text-secondary mb-1">
                   {event.venue} • {event.time}
                 </p>
-                <p className="text-xs text-muted-foreground">{event.description}</p>
+                <p className="text-xs text-muted">{event.description}</p>
               </div>
               <div className="flex-shrink-0">
                 <span className={`px-2 py-1 text-xs rounded-full ${getPriceColor(event.priceType)}`}>
@@ -96,7 +96,7 @@ export const EventsCard: React.FC = () => {
       </div>
 
       <div className="mt-4 pt-4 border-t border-slate-600">
-        <p className="text-xs text-muted-foreground flex items-center">
+        <p className="text-xs text-muted flex items-center">
           <Calendar className="w-3 h-3 mr-1" />
           Events sourced from Eventbrite • Updated every 6 hours
         </p>

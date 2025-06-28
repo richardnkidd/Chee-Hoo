@@ -12,8 +12,8 @@ export const MoviesCard: React.FC = () => {
           <div className="w-12 h-12 bg-destructive/20 rounded-lg flex items-center justify-center mx-auto mb-3">
             <Film className="w-6 h-6 text-destructive" />
           </div>
-          <p className="text-sm font-medium text-foreground mb-1">Movies Unavailable</p>
-          <p className="text-xs text-muted-foreground">Unable to fetch movie showtimes</p>
+          <p className="text-sm font-medium text-primary mb-1">Movies Unavailable</p>
+          <p className="text-xs text-muted">Unable to fetch movie showtimes</p>
         </div>
       </div>
     );
@@ -58,8 +58,8 @@ export const MoviesCard: React.FC = () => {
             <Film className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-foreground">Movies</h2>
-            <p className="text-sm text-muted-foreground">Ward Theater</p>
+            <h2 className="text-lg font-semibold text-primary">Movies</h2>
+            <p className="text-sm text-secondary">Ward Theater</p>
           </div>
         </div>
       </div>
@@ -72,13 +72,13 @@ export const MoviesCard: React.FC = () => {
                 <Image className="w-5 h-5 text-slate-400" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-foreground truncate">{movie.title}</h3>
-                <p className="text-xs text-muted-foreground mb-2">
+                <h3 className="text-sm font-medium text-primary truncate">{movie.title}</h3>
+                <p className="text-xs text-muted mb-2">
                   {movie.rating} • {movie.duration} • {movie.genre}
                 </p>
                 <div className="flex flex-wrap gap-1">
                   {movie.times.map((time, timeIndex) => (
-                    <span key={timeIndex} className="px-2 py-1 bg-slate-700 rounded text-xs text-foreground">
+                    <span key={timeIndex} className="px-2 py-1 bg-slate-700 rounded text-xs text-primary">
                       {time}
                     </span>
                   ))}
@@ -90,7 +90,7 @@ export const MoviesCard: React.FC = () => {
       </div>
 
       <div className="mt-4 pt-4 border-t border-slate-600">
-        <p className="text-xs text-muted-foreground flex items-center">
+        <p className="text-xs text-muted flex items-center">
           <Film className="w-3 h-3 mr-1" />
           Showtimes updated daily at 6 AM HST
         </p>

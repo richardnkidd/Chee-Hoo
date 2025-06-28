@@ -102,11 +102,11 @@ export default function Home() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold gradient-text">Honolulu Live</h1>
-                <p className="text-sm text-[rgb(var(--tropical-sand)/0.8)]">Real-time island rhythms</p>
+                <p className="text-sm text-secondary">Real-time island rhythms</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-[rgb(var(--tropical-sand)/0.7)] hidden sm:inline">
+              <span className="text-sm text-secondary hidden sm:inline">
                 Updated {lastUpdated}
               </span>
               <button 

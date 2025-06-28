@@ -7,6 +7,14 @@ import { getMoviesData } from "./services/moviesService";
 import { getEventsData } from "./services/eventsService";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Add proper MIME type handling for JS modules
+  app.use((req, res, next) => {
+    if (req.url.endsWith('.tsx') || req.url.endsWith('.ts') || req.url.endsWith('.jsx') || req.url.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+    next();
+  });
+
   // Weather endpoint
   app.get("/api/weather", async (req, res) => {
     try {

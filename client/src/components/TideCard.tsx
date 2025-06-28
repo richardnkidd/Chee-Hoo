@@ -11,8 +11,8 @@ export const TideCard: React.FC = () => {
         <div className="w-16 h-16 rounded-2xl bg-[rgb(var(--tropical-volcanic)/0.1)] flex items-center justify-center mx-auto mb-4">
           <Waves className="w-8 h-8 text-[rgb(var(--tropical-volcanic))]" />
         </div>
-        <p className="text-base font-medium text-[rgb(var(--tropical-sand))]">Tides Unavailable</p>
-        <p className="text-sm text-[rgb(var(--tropical-sand)/0.6)] mt-1">Unable to fetch tide data</p>
+        <p className="text-base font-medium text-primary">Tides Unavailable</p>
+        <p className="text-sm text-muted mt-1">Unable to fetch tide data</p>
       </div>
     );
   }
@@ -47,12 +47,12 @@ export const TideCard: React.FC = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-[rgb(var(--tropical-sand))]">Tides</h2>
-            <p className="text-sm text-[rgb(var(--tropical-sand)/0.7)]">Honolulu Harbor</p>
+            <h2 className="text-xl font-semibold text-primary">Tides</h2>
+            <p className="text-sm text-secondary">Honolulu Harbor</p>
           </div>
         </div>
         <div className="text-right">
-          <p className="text-sm text-[rgb(var(--tropical-sand)/0.6)]">Current</p>
+          <p className="text-sm text-muted">Current</p>
           <p className="text-lg font-semibold gradient-text">{tides.current.status}</p>
         </div>
       </div>
@@ -60,8 +60,8 @@ export const TideCard: React.FC = () => {
       {/* Current Tide Visual */}
       <div className="glass rounded-2xl p-4 mb-6">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-sm text-[rgb(var(--tropical-sand)/0.7)]">Tide Level</span>
-          <span className="text-base font-semibold text-[rgb(var(--tropical-sand))]">{tides.current.level} ft</span>
+          <span className="text-sm text-secondary">Tide Level</span>
+          <span className="text-base font-semibold text-primary">{tides.current.level} ft</span>
         </div>
 
         <div className="relative">
@@ -82,7 +82,7 @@ export const TideCard: React.FC = () => {
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg"></div>
             </div>
           </div>
-          <div className="flex justify-between text-xs text-[rgb(var(--tropical-sand)/0.5)] mt-2">
+          <div className="flex justify-between text-xs text-muted mt-2">
             <span>Low Tide</span>
             <span>High Tide</span>
           </div>
@@ -91,7 +91,7 @@ export const TideCard: React.FC = () => {
 
       {/* Upcoming Tides */}
       <div className="space-y-3">
-        <h3 className="text-sm font-medium text-[rgb(var(--tropical-sand)/0.8)] mb-3">Next Tides</h3>
+        <h3 className="text-sm font-medium text-secondary mb-3">Next Tides</h3>
         {tides.upcoming.slice(0, 4).map((tide, index) => (
           <div key={index} className="glass rounded-2xl p-4 hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
             <div className="flex items-center justify-between">
@@ -108,15 +108,15 @@ export const TideCard: React.FC = () => {
                   )}
                 </div>
                 <div>
-                  <p className="text-base font-medium text-[rgb(var(--tropical-sand))]">
+                  <p className="text-base font-medium text-primary">
                     {tide.type} Tide
                   </p>
-                  <p className="text-sm text-[rgb(var(--tropical-sand)/0.6)]">{tide.height} ft</p>
+                  <p className="text-sm text-muted">{tide.height} ft</p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-base font-medium text-[rgb(var(--tropical-sand))]">{tide.time}</p>
-                <p className="text-xs text-[rgb(var(--tropical-sand)/0.5)]">{tide.timeLabel}</p>
+                <p className="text-base font-medium text-primary">{tide.time}</p>
+                <p className="text-xs text-muted">{tide.timeLabel}</p>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@ export const TideCard: React.FC = () => {
 
       {/* Footer */}
       <div className="mt-6 pt-4 border-t border-[rgb(var(--tropical-sage)/0.2)]">
-        <p className="text-xs text-[rgb(var(--tropical-sand)/0.5)] flex items-center">
+        <p className="text-xs text-muted flex items-center">
           <Activity className="w-3 h-3 mr-2" />
           NOAA tide data • Updates every 30 minutes
         </p>

@@ -18,8 +18,8 @@ export const WeatherCard: React.FC = () => {
         <div className="w-16 h-16 rounded-2xl bg-[rgb(var(--tropical-volcanic)/0.1)] flex items-center justify-center mx-auto mb-4">
           <CloudRain className="w-8 h-8 text-[rgb(var(--tropical-volcanic))]" />
         </div>
-        <p className="text-base font-medium text-[rgb(var(--tropical-sand))]">Weather Unavailable</p>
-        <p className="text-sm text-[rgb(var(--tropical-sand)/0.6)] mt-1">Unable to fetch weather data</p>
+        <p className="text-base font-medium text-primary">Weather Unavailable</p>
+        <p className="text-sm text-muted mt-1">Unable to fetch weather data</p>
       </div>
     );
   }
@@ -56,13 +56,13 @@ export const WeatherCard: React.FC = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-[rgb(var(--tropical-sand))]">Weather</h2>
-            <p className="text-sm text-[rgb(var(--tropical-sand)/0.7)]">Honolulu, HI</p>
+            <h2 className="text-xl font-semibold text-primary">Weather</h2>
+            <p className="text-sm text-secondary">Honolulu, HI</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
           <div className="status-indicator bg-green-400"></div>
-          <span className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Live</span>
+          <span className="text-xs text-muted">Live</span>
         </div>
       </div>
 
@@ -71,58 +71,58 @@ export const WeatherCard: React.FC = () => {
         <div>
           <div className="flex items-baseline space-x-3">
             <span className="text-5xl font-light gradient-text">{weather.current.temp}°</span>
-            <span className="text-xl text-[rgb(var(--tropical-sand)/0.8)]">F</span>
+            <span className="text-xl text-secondary">F</span>
           </div>
-          <p className="text-lg text-[rgb(var(--tropical-sand))] mt-1">{weather.current.condition}</p>
-          <p className="text-sm text-[rgb(var(--tropical-sand)/0.6)] mt-1">Feels like {weather.current.feelsLike}°F</p>
+          <p className="text-lg text-primary mt-1">{weather.current.condition}</p>
+          <p className="text-sm text-muted mt-1">Feels like {weather.current.feelsLike}°F</p>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <Droplets className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
-              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Humidity</p>
+              <p className="text-xs text-muted">Humidity</p>
             </div>
-            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.humidity}%</p>
+            <p className="text-lg font-medium text-primary">{weather.current.humidity}%</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <Sun className="w-4 h-4 text-[rgb(var(--tropical-sand))]" />
-              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">UV Index</p>
+              <p className="text-xs text-muted">UV Index</p>
             </div>
-            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.uvIndex}</p>
+            <p className="text-lg font-medium text-primary">{weather.current.uvIndex}</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <Wind className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
-              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Wind</p>
+              <p className="text-xs text-muted">Wind</p>
             </div>
-            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.wind}</p>
+            <p className="text-lg font-medium text-primary">{weather.current.wind}</p>
           </div>
           <div className="glass rounded-2xl p-3">
             <div className="flex items-center space-x-2 mb-1">
               <div className="w-4 h-4 rounded-full bg-[rgb(var(--tropical-ocean-light)/0.3)]"></div>
-              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Pressure</p>
+              <p className="text-xs text-muted">Pressure</p>
             </div>
-            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.pressure}</p>
+            <p className="text-lg font-medium text-primary">{weather.current.pressure}</p>
           </div>
         </div>
       </div>
 
       {/* 3-Day Forecast */}
       <div className="border-t border-[rgb(var(--tropical-sage)/0.2)] pt-4">
-        <h3 className="text-sm font-medium text-[rgb(var(--tropical-sand)/0.8)] mb-4">3-Day Forecast</h3>
+        <h3 className="text-sm font-medium text-secondary mb-4">3-Day Forecast</h3>
         <div className="grid grid-cols-3 gap-3">
           {weather.forecast.slice(0, 3).map((day, index) => {
             const DayIcon = getWeatherIcon(day.condition);
             return (
               <div key={index} className="text-center p-4 rounded-2xl glass hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
-                <p className="text-sm text-[rgb(var(--tropical-sand)/0.7)] mb-2">{day.day}</p>
+                <p className="text-sm text-secondary mb-2">{day.day}</p>
                 <DayIcon className="w-8 h-8 text-[rgb(var(--tropical-ocean-light))] mx-auto mb-2" />
                 <div className="flex items-center justify-center space-x-1">
-                  <span className="text-base font-medium text-[rgb(var(--tropical-sand))]">{day.highTemp}°</span>
-                  <span className="text-sm text-[rgb(var(--tropical-sand)/0.5)]">/</span>
-                  <span className="text-sm text-[rgb(var(--tropical-sand)/0.7)]">{day.lowTemp}°</span>
+                  <span className="text-base font-medium text-primary">{day.highTemp}°</span>
+                  <span className="text-sm text-muted">/</span>
+                  <span className="text-sm text-secondary">{day.lowTemp}°</span>
                 </div>
               </div>
             );
