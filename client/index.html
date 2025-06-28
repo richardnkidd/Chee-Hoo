@@ -23,24 +23,29 @@
     <link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Honolulu%20Live%22,%22short_name%22:%22HNL%20Live%22,%22theme_color%22:%22%23191e19%22,%22background_color%22:%22%23191e19%22,%22display%22:%22standalone%22,%22orientation%22:%22portrait%22,%22start_url%22:%22/%22}">
 
     <style>
-      /* Critical CSS for initial load */
+      /* Critical CSS for initial load - Design Specification Exact Colors */
       :root {
-        --tropical-deep-green: 25, 30, 25;
-        --tropical-stone: 45, 45, 43;
-        --tropical-ocean-deep: 15, 43, 62;
-        --tropical-mist: 245, 243, 240;
+        --tropical-deep-green: 25, 30, 25; /* #191E19 */
+        --tropical-sage: 67, 84, 67; /* #435443 */
+        --tropical-ocean-deep: 15, 43, 62; /* #0F2B3E */
+        --tropical-ocean: 33, 66, 99; /* #214263 */
+        --tropical-ocean-light: 64, 123, 158; /* #407B9E */
+        --tropical-sand: 234, 221, 202; /* #EADDCA */
+        --tropical-volcanic: 139, 35, 35; /* #8B2323 */
+        --tropical-stone: 45, 45, 43; /* #2D2D2B */
+        --tropical-mist: 245, 243, 240; /* #F5F3F0 */
       }
 
       body {
         margin: 0;
         background: linear-gradient(135deg,
-          rgb(var(--tropical-deep-green)) 0%,
-          rgb(var(--tropical-stone) / 0.9) 50%,
-          rgb(var(--tropical-ocean-deep)) 100%);
-        /* Fallback solid color for readability */
-        background-color: #121212;
+          #191E19 0%,
+          #2D2D2B 50%,
+          #0F2B3E 100%) !important;
+        /* Design Specification: Deep green to ocean gradient */
+        background-color: #191E19 !important;
         background-attachment: fixed;
-        color: rgb(var(--tropical-mist));
+        color: #F5F3F0 !important; /* Text Primary: Mist */
         font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
