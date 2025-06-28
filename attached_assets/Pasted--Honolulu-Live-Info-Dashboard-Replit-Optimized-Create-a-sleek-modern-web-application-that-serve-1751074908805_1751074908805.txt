@@ -1,0 +1,349 @@
+# Honolulu Live Info Dashboard (Replit-Optimized)
+
+Create a sleek, modern web application that serves as a real-time information hub for Honolulu. Build this as a React TypeScript application optimized for Replit's AI-build workflow with mobile-first responsive design.
+
+## Quick-Start Files & Setup
+
+### Essential Replit Configuration
+```bash
+# Initialize with Vite TypeScript template
+npm create vite@latest honolulu-dashboard -- --template react-ts
+cd honolulu-dashboard
+```
+
+**`.replit`**
+```
+run = "npm run dev"
+```
+
+**`replit.nix`**
+```nix
+{ deps = [ pkgs.nodejs_18 ]; }
+```
+
+**`package.json` dependencies** (add to generated file):
+```json
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swr": "^2.2.4",
+    "lucide-react": "^0.263.1",
+    "react-hot-toast": "^2.4.1",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8",
+    "tailwindcss": "^3.3.6",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16",
+    "@tailwindcss/typography": "^0.5.10",
+    "typescript": "^5.2.2",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1",
+    "vitest": "^1.0.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && npx serve -s dist"
+  }
+}
+```
+
+**Replit Secrets** (store in Secrets Manager):
+- `OPENWEATHER_API_KEY`
+- `NOAA_API_TOKEN` 
+- `EVENTBRITE_TOKEN`
+
+## Project Structure
+```
+src/
+├── hooks/
+│   ├── useWeather.ts
+│   ├── useTides.ts
+│   ├── useMovies.ts
+│   └── useEvents.ts
+├── components/
+│   ├── WeatherCard/
+│   │   ├── index.tsx
+│   │   ├── CurrentWeather.tsx
+│   │   └── ForecastStrip.tsx
+│   ├── TideCard/
+│   │   ├── index.tsx
+│   │   ├── TideStatus.tsx
+│   │   └── TideSchedule.tsx
+│   ├── MoviesCard/
+│   │   ├── index.tsx
+│   │   └── ShowtimesList.tsx
+│   ├── EventsCard/
+│   │   ├── index.tsx
+│   │   └── EventsList.tsx
+│   └── ErrorBoundary.tsx
+├── lib/
+│   ├── api.ts
+│   ├── cache.ts
+│   └── constants.ts
+├── types/
+│   ├── weather.d.ts
+│   ├── tides.d.ts
+│   ├── movies.d.ts
+│   └── events.d.ts
+├── pages/
+│   └── Home.tsx
+└── App.tsx
+```
+
+## Technical Requirements
+
+### Core Stack & Configuration
+- **Framework**: React 18 + TypeScript (strict mode enabled)
+- **Styling**: Tailwind CSS with custom color palette
+- **Data Fetching**: SWR for auto-revalidation and caching
+- **Build Tool**: Vite for fast development and optimized builds
+- **Error Handling**: React Error Boundaries + react-hot-toast
+- **Linting**: ESLint + Prettier with strict TypeScript rules
+
+### TypeScript Configuration
+```json
+// tsconfig.json additions
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  }
+}
+```
+
+### Tailwind Configuration
+**`tailwind.config.js`**
+```javascript
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1e293b',
+        secondary: '#0f766e', 
+        accent: '#0369a1',
+        background: '#0f172a',
+        card: '#1e293b',
+        'text-primary': '#f8fafc',
+        'text-secondary': '#cbd5e1',
+        success: '#059669',
+        warning: '#d97706',
+        error: '#dc2626'
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif']
+      }
+    }
+  },
+  plugins: ['@tailwindcss/typography']
+}
+```
+
+## Data Sources & Implementation Strategy
+
+### Global Constants (`lib/constants.ts`)
+```typescript
+export const REFRESH_INTERVALS = {
+  WEATHER_MS: 900_000,    // 15 minutes
+  TIDES_MS: 1_800_000,    // 30 minutes  
+  MOVIES_MS: 86_400_000,  // 24 hours
+  EVENTS_MS: 21_600_000   // 6 hours
+} as const;
+
+export const CACHE_KEYS = {
+  WEATHER: 'weather',
+  TIDES: 'tides', 
+  MOVIES: 'movies',
+  EVENTS: 'events'
+} as const;
+```
+
+### SWR Data Fetching Strategy
+Replace manual useState + useEffect with SWR hooks:
+
+```typescript
+// hooks/useWeather.ts example
+import useSWR from 'swr';
+import { REFRESH_INTERVALS } from '../lib/constants';
+
+export const useWeather = () => {
+  return useSWR(
+    'weather-honolulu',
+    () => fetchWeatherData(21.3099, -157.8581),
+    {
+      refreshInterval: REFRESH_INTERVALS.WEATHER_MS,
+      revalidateOnFocus: false,
+      fallbackData: getCachedWeather()
+    }
+  );
+};
+```
+
+### Cache Management (`lib/cache.ts`)
+```typescript
+// Cache key format: weather:2024010112, tides:20240101
+// Purge items older than TTL on app boot
+export const getCacheKey = (type: string, date?: Date): string => {
+  const now = date || new Date();
+  const suffix = type === 'weather' 
+    ? now.toISOString().slice(0, 13).replace(/[-:]/g, '')
+    : now.toISOString().slice(0, 10).replace(/-/g, '');
+  return `${type}:${suffix}`;
+};
+```
+
+### Movie Showtimes (Isolated Scraping)
+Create separate Node script for server-side scraping:
+
+**`scripts/scrape-showtimes.js`** (Edge Function)
+```javascript
+// Node script using Cheerio + Axios
+// Deployed on Replit's scheduled webhook (cron job)
+// Writes JSON to ./public/showtimes.json each day at 6 AM HST
+// If scraping fails, return last-known JSON
+
+const cheerio = require('cheerio');
+const axios = require('axios');
+const fs = require('fs');
+
+// Scrape Consolidated Theaters Ward website
+// Save to public/showtimes.json for client consumption
+```
+
+## API Integration Details
+
+### 1. Weather Data (OpenWeatherMap)
+- **Endpoint**: Current Weather + 5-day forecast
+- **Location**: Honolulu (21.3099, -157.8581)
+- **Display**: Current temp, conditions, humidity, wind, UV index, 3-day forecast
+
+### 2. Tide Information (NOAA)
+- **Endpoint**: NOAA Tides & Currents API
+- **Station**: Honolulu Harbor (Station ID: 1612340)
+- **Display**: Next 4 tide times, current status, mini tide chart
+
+### 3. Movie Showtimes (Web Scraping)
+- **Source**: Consolidated Theaters Ward website
+- **Method**: Server-side Cheerio scraping → JSON file
+- **Fallback**: Cached previous day's data if scraping fails
+
+### 4. Events Calendar
+- **Primary**: Eventbrite API for Honolulu events
+- **Display**: Next 5-7 upcoming major events with dates/venues
+
+## Design System Implementation
+
+### Visual Treatment
+- Subtle gradients on cards with gentle shadows
+- 8-12px border radius for modern feel
+- Micro-animations on data updates using Framer Motion
+- Clean typography hierarchy with Inter font
+- Minimalist Lucide React icons
+
+### Component Standards
+- All new files use `.tsx` extension
+- Implement React.memo for performance optimization
+- Use Tailwind utility classes exclusively
+- Single `<ErrorBoundary>` HOC in App.tsx
+
+## Error Handling & User Experience
+
+### Global Error Strategy
+```typescript
+// components/ErrorBoundary.tsx
+// Single error boundary with react-hot-toast notifications
+// Log to console.error for debugging
+// Show user-friendly fallback UI
+```
+
+### Loading States
+- Skeleton components during initial load
+- Smooth data transitions without jarring reloads
+- Pull-to-refresh gesture support (mobile)
+- Visual refresh indicators
+
+### Offline Handling
+- Detect network status
+- Display cached data with "offline" indicator
+- Queue updates for when connection resumes
+
+## Core Features (Must-Have)
+
+### Real-time Updates
+- SWR auto-revalidation with specified intervals
+- Manual refresh button with loading states  
+- Last updated timestamps on each card
+- Background sync without UI disruption
+
+### Mobile Optimization
+- Single-column card layout on mobile
+- Touch-friendly interactive elements (44px minimum)
+- Optimized font sizes and spacing
+- Fast loading with image lazy loading
+
+### Performance Features
+- localStorage caching with TTL expiration
+- Debounced API calls to prevent spam
+- Efficient re-rendering with React.memo
+- Vite-optimized bundle splitting
+
+## Stretch Goals (Nice-to-Have)
+
+### Advanced Interactions
+- Gentle hover effects and micro-animations
+- Swipe gestures for card navigation
+- Progressive disclosure for detailed data
+- Dark/light mode toggle
+
+### Analytics & Monitoring
+- Simple usage pattern tracking
+- API failure rate monitoring
+- Performance metrics collection
+- User feedback collection
+
+## Testing & Quality Assurance
+
+### Minimum Testing Requirements
+- ESLint with strict TypeScript rules
+- Prettier for consistent formatting
+- One Vitest test suite per custom hook
+- Error boundary testing with mock failures
+
+### Code Quality Standards
+- All API responses typed with TypeScript interfaces
+- Comprehensive JSDoc comments for complex functions
+- Consistent naming conventions throughout
+- Clean separation of concerns (hooks, components, utilities)
+
+## Deployment & Maintenance
+
+### Production Build
+```bash
+npm run build && npx serve -s dist
+```
+
+### Monitoring Setup
+- Console logging for API failures with structured data
+- Toast notifications for user-visible errors
+- Version tracking for cache invalidation
+- Clear update documentation for future iterations
+
+## Success Metrics
+- Sub-3 second initial page load on mobile
+- 99% compatibility across modern mobile browsers
+- Graceful degradation during 100% API failure scenarios
+- Data freshness maintained within specified refresh intervals
+- Zero TypeScript compilation errors
+- Lighthouse Performance score > 90
+
+Build this as a production-ready application that balances real-time functionality with reliable performance, incorporating sophisticated aesthetic sensibilities while maintaining practical utility for Honolulu residents and visitors.
