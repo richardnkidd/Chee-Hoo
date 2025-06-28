@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sun, Cloud, CloudRain, Loader2 } from 'lucide-react';
+import { Sun, Cloud, CloudRain, Loader2, Droplets, Wind } from 'lucide-react';
 import { useWeather } from '../hooks/useWeather';
 
 const getWeatherIcon = (condition: string) => {
@@ -14,34 +14,29 @@ export const WeatherCard: React.FC = () => {
 
   if (error) {
     return (
-      <div className="bg-gradient-to-br from-card to-slate-700/50 rounded-xl shadow-lg border border-slate-600/30 p-6 animate-slide-up">
-        <div className="text-center py-8">
-          <div className="w-12 h-12 bg-destructive/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-            <CloudRain className="w-6 h-6 text-destructive" />
-          </div>
-          <p className="text-sm font-medium text-foreground mb-1">Weather Unavailable</p>
-          <p className="text-xs text-muted-foreground">Unable to fetch weather data</p>
+      <div className="text-center py-8">
+        <div className="w-16 h-16 rounded-2xl bg-[rgb(var(--tropical-volcanic)/0.1)] flex items-center justify-center mx-auto mb-4">
+          <CloudRain className="w-8 h-8 text-[rgb(var(--tropical-volcanic))]" />
         </div>
+        <p className="text-base font-medium text-[rgb(var(--tropical-sand))]">Weather Unavailable</p>
+        <p className="text-sm text-[rgb(var(--tropical-sand)/0.6)] mt-1">Unable to fetch weather data</p>
       </div>
     );
   }
 
   if (isLoading || !weather) {
     return (
-      <div className="bg-gradient-to-br from-card to-slate-700/50 rounded-xl shadow-lg border border-slate-600/30 p-6 animate-slide-up">
-        <div className="animate-pulse">
-          <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 bg-slate-600 rounded-lg"></div>
-            <div className="space-y-2">
-              <div className="h-4 bg-slate-600 rounded w-20"></div>
-              <div className="h-3 bg-slate-700 rounded w-32"></div>
-            </div>
+      <div className="animate-pulse">
+        <div className="flex items-center space-x-4 mb-6">
+          <div className="w-12 h-12 bg-[rgb(var(--tropical-stone)/0.3)] rounded-2xl"></div>
+          <div className="space-y-2">
+            <div className="h-5 bg-[rgb(var(--tropical-stone)/0.3)] rounded-xl w-24"></div>
+            <div className="h-4 bg-[rgb(var(--tropical-stone)/0.2)] rounded-xl w-32"></div>
           </div>
-          <div className="space-y-3">
-            <div className="h-8 bg-slate-600 rounded w-32"></div>
-            <div className="h-4 bg-slate-600 rounded w-3/4"></div>
-            <div className="h-4 bg-slate-600 rounded w-1/2"></div>
-          </div>
+        </div>
+        <div className="space-y-3">
+          <div className="h-12 bg-[rgb(var(--tropical-stone)/0.3)] rounded-2xl w-40"></div>
+          <div className="h-4 bg-[rgb(var(--tropical-stone)/0.2)] rounded-xl w-3/4"></div>
         </div>
       </div>
     );
@@ -50,65 +45,85 @@ export const WeatherCard: React.FC = () => {
   const WeatherIcon = getWeatherIcon(weather.current.condition);
 
   return (
-    <div className="bg-gradient-to-br from-card to-slate-700/50 rounded-xl shadow-lg border border-slate-600/30 p-6 animate-slide-up">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-            <WeatherIcon className="w-6 h-6 text-white" />
+    <div>
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center space-x-4">
+          <div className="relative">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--tropical-ocean))] to-[rgb(var(--tropical-ocean-light))]"></div>
+              <WeatherIcon className="w-6 h-6 text-white relative z-10" />
+            </div>
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-foreground">Weather</h2>
-            <p className="text-sm text-muted-foreground">Honolulu, HI</p>
+            <h2 className="text-xl font-semibold text-[rgb(var(--tropical-sand))]">Weather</h2>
+            <p className="text-sm text-[rgb(var(--tropical-sand)/0.7)]">Honolulu, HI</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></div>
-          <span className="text-xs text-muted-foreground">Live</span>
+          <div className="status-indicator bg-green-400"></div>
+          <span className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Live</span>
         </div>
       </div>
 
       {/* Current Weather */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="col-span-2 sm:col-span-1">
-          <div className="flex items-center space-x-4">
-            <div className="text-4xl font-light text-foreground">{weather.current.temp}°F</div>
-            <div>
-              <p className="text-lg font-medium text-foreground">{weather.current.condition}</p>
-              <p className="text-sm text-muted-foreground">Feels like {weather.current.feelsLike}°F</p>
-            </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <div>
+          <div className="flex items-baseline space-x-3">
+            <span className="text-5xl font-light gradient-text">{weather.current.temp}°</span>
+            <span className="text-xl text-[rgb(var(--tropical-sand)/0.8)]">F</span>
           </div>
+          <p className="text-lg text-[rgb(var(--tropical-sand))] mt-1">{weather.current.condition}</p>
+          <p className="text-sm text-[rgb(var(--tropical-sand)/0.6)] mt-1">Feels like {weather.current.feelsLike}°F</p>
         </div>
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          <div>
-            <p className="text-muted-foreground">Humidity</p>
-            <p className="font-medium text-foreground">{weather.current.humidity}%</p>
+
+        <div className="grid grid-cols-2 gap-3">
+          <div className="glass rounded-2xl p-3">
+            <div className="flex items-center space-x-2 mb-1">
+              <Droplets className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
+              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Humidity</p>
+            </div>
+            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.humidity}%</p>
           </div>
-          <div>
-            <p className="text-muted-foreground">UV Index</p>
-            <p className="font-medium text-foreground">{weather.current.uvIndex}</p>
+          <div className="glass rounded-2xl p-3">
+            <div className="flex items-center space-x-2 mb-1">
+              <Sun className="w-4 h-4 text-[rgb(var(--tropical-sand))]" />
+              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">UV Index</p>
+            </div>
+            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.uvIndex}</p>
           </div>
-          <div>
-            <p className="text-muted-foreground">Wind</p>
-            <p className="font-medium text-foreground">{weather.current.wind}</p>
+          <div className="glass rounded-2xl p-3">
+            <div className="flex items-center space-x-2 mb-1">
+              <Wind className="w-4 h-4 text-[rgb(var(--tropical-ocean-light))]" />
+              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Wind</p>
+            </div>
+            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.wind}</p>
           </div>
-          <div>
-            <p className="text-muted-foreground">Pressure</p>
-            <p className="font-medium text-foreground">{weather.current.pressure}</p>
+          <div className="glass rounded-2xl p-3">
+            <div className="flex items-center space-x-2 mb-1">
+              <div className="w-4 h-4 rounded-full bg-[rgb(var(--tropical-ocean-light)/0.3)]"></div>
+              <p className="text-xs text-[rgb(var(--tropical-sand)/0.6)]">Pressure</p>
+            </div>
+            <p className="text-lg font-medium text-[rgb(var(--tropical-sand))]">{weather.current.pressure}</p>
           </div>
         </div>
       </div>
 
       {/* 3-Day Forecast */}
-      <div className="border-t border-slate-600 pt-4">
-        <h3 className="text-sm font-medium text-muted-foreground mb-3">3-Day Forecast</h3>
-        <div className="grid grid-cols-3 gap-2">
+      <div className="border-t border-[rgb(var(--tropical-sage)/0.2)] pt-4">
+        <h3 className="text-sm font-medium text-[rgb(var(--tropical-sand)/0.8)] mb-4">3-Day Forecast</h3>
+        <div className="grid grid-cols-3 gap-3">
           {weather.forecast.slice(0, 3).map((day, index) => {
             const DayIcon = getWeatherIcon(day.condition);
             return (
-              <div key={index} className="text-center p-3 rounded-lg bg-slate-700/30 hover:bg-slate-700/50 transition-colors duration-200">
-                <p className="text-xs text-muted-foreground mb-1">{day.day}</p>
-                <DayIcon className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-                <p className="text-sm font-medium text-foreground">{day.highTemp}°/{day.lowTemp}°</p>
+              <div key={index} className="text-center p-4 rounded-2xl glass hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
+                <p className="text-sm text-[rgb(var(--tropical-sand)/0.7)] mb-2">{day.day}</p>
+                <DayIcon className="w-8 h-8 text-[rgb(var(--tropical-ocean-light))] mx-auto mb-2" />
+                <div className="flex items-center justify-center space-x-1">
+                  <span className="text-base font-medium text-[rgb(var(--tropical-sand))]">{day.highTemp}°</span>
+                  <span className="text-sm text-[rgb(var(--tropical-sand)/0.5)]">/</span>
+                  <span className="text-sm text-[rgb(var(--tropical-sand)/0.7)]">{day.lowTemp}°</span>
+                </div>
               </div>
             );
           })}

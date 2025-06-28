@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Waves, RefreshCw, WifiOff } from 'lucide-react';
+import { Waves, RefreshCw, WifiOff, Palmtree } from 'lucide-react';
 import { WeatherCard } from '../components/WeatherCard';
 import { TideCard } from '../components/TideCard';
 import { MoviesCard } from '../components/MoviesCard';
@@ -79,28 +79,42 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-slate-800">
+    <div className="min-h-screen relative overflow-x-hidden">
+      {/* Decorative wave patterns */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-64 opacity-5">
+          <svg viewBox="0 0 1440 320" className="w-full h-full">
+            <path fill="currentColor" d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,128C672,128,768,160,864,165.3C960,171,1056,149,1152,138.7C1248,128,1344,128,1392,128L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+          </svg>
+        </div>
+      </div>
+
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-slate-700">
+      <header className="sticky top-0 z-50 glass border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-blue-500 rounded-lg flex items-center justify-center">
-                <Waves className="w-5 h-5 text-white" />
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--tropical-ocean))] to-[rgb(var(--tropical-ocean-light))] opacity-90"></div>
+                  <Waves className="w-6 h-6 text-white relative z-10 animate-wave" />
+                </div>
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground">Honolulu Live</h1>
-                <p className="text-xs text-muted-foreground">Real-time island info</p>
+                <h1 className="text-2xl font-bold gradient-text">Honolulu Live</h1>
+                <p className="text-sm text-[rgb(var(--tropical-sand)/0.8)]">Real-time island rhythms</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
-              <span className="text-xs text-muted-foreground">Updated {lastUpdated}</span>
+            <div className="flex items-center space-x-4">
+              <span className="text-sm text-[rgb(var(--tropical-sand)/0.7)] hidden sm:inline">
+                Updated {lastUpdated}
+              </span>
               <button 
-                className="p-2 rounded-lg bg-card hover:bg-slate-700 transition-colors duration-200 touch-target disabled:opacity-50"
+                className="tropical-button p-3 !px-4"
                 onClick={handleRefresh}
                 disabled={isRefreshing}
               >
-                <RefreshCw className={`w-4 h-4 text-muted-foreground ${isRefreshing ? 'animate-spin' : ''}`} />
+                <RefreshCw className={`w-5 h-5 relative z-10 ${isRefreshing ? 'animate-spin' : ''}`} />
               </button>
             </div>
           </div>
@@ -108,22 +122,36 @@ export default function Home() {
       </header>
 
       {/* Main Dashboard */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <WeatherCard />
-          <TideCard />
-          <MoviesCard />
-          <EventsCard />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="tropical-card p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <WeatherCard />
+          </div>
+          <div className="tropical-card p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <TideCard />
+          </div>
+          <div className="tropical-card p-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <MoviesCard />
+          </div>
+          <div className="tropical-card p-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <EventsCard />
+          </div>
         </div>
+
+        {/* Decorative elements */}
+        <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-gradient-to-br from-[rgb(var(--tropical-ocean)/0.1)] to-transparent blur-3xl"></div>
+        <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-gradient-to-br from-[rgb(var(--tropical-sage)/0.1)] to-transparent blur-3xl"></div>
       </main>
 
       {/* Offline Indicator */}
       {!isOnline && (
-        <div className="fixed bottom-4 left-4 right-4 bg-yellow-600 text-slate-900 px-4 py-3 rounded-lg shadow-lg flex items-center space-x-3 animate-slide-up">
-          <WifiOff className="w-5 h-5 flex-shrink-0" />
+        <div className="fixed bottom-6 left-6 right-6 max-w-md mx-auto tropical-card p-4 flex items-center space-x-3 animate-slide-up">
+          <div className="w-10 h-10 rounded-full bg-[rgb(var(--tropical-volcanic)/0.2)] flex items-center justify-center">
+            <WifiOff className="w-5 h-5 text-[rgb(var(--tropical-volcanic))]" />
+          </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium">You're offline</p>
-            <p className="text-xs opacity-80">Showing cached data from your last visit</p>
+            <p className="text-sm font-semibold text-[rgb(var(--tropical-sand))]">You're offline</p>
+            <p className="text-xs text-[rgb(var(--tropical-sand)/0.7)]">Showing cached data from your last visit</p>
           </div>
         </div>
       )}

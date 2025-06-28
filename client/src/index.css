@@ -1,62 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: hsl(222, 84%, 5%);
-  --foreground: hsl(213, 13%, 98%);
-  --muted: hsl(217, 33%, 17%);
-  --muted-foreground: hsl(215, 20%, 65%);
-  --popover: hsl(222, 47%, 11%);
-  --popover-foreground: hsl(213, 13%, 98%);
-  --card: hsl(217, 33%, 17%);
-  --card-foreground: hsl(213, 13%, 98%);
-  --border: hsl(217, 33%, 17%);
-  --input: hsl(217, 33%, 17%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(174, 100%, 23%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(207, 90%, 54%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(217, 33%, 17%);
-  --radius: 0.75rem;
-  
-  /* Custom Honolulu palette */
-  --honolulu-primary: hsl(215, 28%, 17%);
-  --honolulu-secondary: hsl(174, 100%, 23%);
-  --honolulu-accent: hsl(207, 90%, 54%);
-  --honolulu-background: hsl(222, 84%, 5%);
-  --honolulu-card: hsl(215, 28%, 17%);
-  --honolulu-text-primary: hsl(213, 13%, 98%);
-  --honolulu-text-secondary: hsl(215, 16%, 82%);
-  --honolulu-success: hsl(158, 100%, 20%);
-  --honolulu-warning: hsl(25, 95%, 45%);
-  --honolulu-error: hsl(0, 73%, 41%);
+  /* Tropical Palette - Subtle & Sophisticated */
+  --tropical-deep-green: 25, 30, 25; /* Deep forest green */
+  --tropical-sage: 67, 84, 67; /* Sage green */
+  --tropical-ocean-deep: 15, 43, 62; /* Deep ocean blue */
+  --tropical-ocean: 33, 66, 99; /* Ocean blue */
+  --tropical-ocean-light: 64, 123, 158; /* Light ocean */
+  --tropical-sand: 234, 221, 202; /* Light tan/sand */
+  --tropical-volcanic: 139, 35, 35; /* Lava red */
+  --tropical-stone: 45, 45, 43; /* Dark grey/charcoal */
+  --tropical-mist: 245, 243, 240; /* Off-white */
+
+  /* Base color mappings */
+  --background: rgb(var(--tropical-deep-green));
+  --foreground: rgb(var(--tropical-mist));
+  --muted: rgb(var(--tropical-sage) / 0.3);
+  --muted-foreground: rgb(var(--tropical-sand) / 0.8);
+  --popover: rgb(var(--tropical-stone) / 0.95);
+  --popover-foreground: rgb(var(--tropical-mist));
+  --card: rgb(var(--tropical-stone) / 0.6);
+  --card-foreground: rgb(var(--tropical-mist));
+  --border: rgb(var(--tropical-sage) / 0.2);
+  --input: rgb(var(--tropical-stone) / 0.5);
+  --primary: rgb(var(--tropical-ocean));
+  --primary-foreground: rgb(var(--tropical-mist));
+  --secondary: rgb(var(--tropical-sage));
+  --secondary-foreground: rgb(var(--tropical-mist));
+  --accent: rgb(var(--tropical-ocean-light));
+  --accent-foreground: rgb(var(--tropical-deep-green));
+  --destructive: rgb(var(--tropical-volcanic));
+  --destructive-foreground: rgb(var(--tropical-mist));
+  --ring: rgb(var(--tropical-ocean-light) / 0.5);
+  --radius: 1.25rem;
 }
 
 .dark {
-  --background: hsl(222, 84%, 5%);
-  --foreground: hsl(213, 13%, 98%);
-  --muted: hsl(217, 33%, 17%);
-  --muted-foreground: hsl(215, 20%, 65%);
-  --popover: hsl(222, 47%, 11%);
-  --popover-foreground: hsl(213, 13%, 98%);
-  --card: hsl(217, 33%, 17%);
-  --card-foreground: hsl(213, 13%, 98%);
-  --border: hsl(217, 33%, 17%);
-  --input: hsl(217, 33%, 17%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(217, 33%, 17%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(217, 33%, 17%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 62%, 31%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(217, 33%, 17%);
+  /* Dark mode uses the same palette */
 }
 
 @layer base {
@@ -65,54 +49,267 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    @apply font-sans antialiased;
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, 
+      rgb(var(--tropical-deep-green)) 0%, 
+      rgb(var(--tropical-stone) / 0.9) 50%, 
+      rgb(var(--tropical-ocean-deep)) 100%);
+    background-attachment: fixed;
+    color: rgb(var(--tropical-mist));
+    position: relative;
+  }
+
+  /* Subtle Polynesian pattern overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgb(var(--tropical-ocean) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgb(var(--tropical-sage) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 50% 20%, rgb(var(--tropical-sand) / 0.02) 0%, transparent 50%);
+    background-size: 400px 400px, 600px 600px, 800px 800px;
+    animation: floatPattern 120s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Ensure content is above pattern */
+  #root {
+    position: relative;
+    z-index: 2;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* Organic card design */
+  .tropical-card {
+    @apply rounded-3xl;
+    background: linear-gradient(135deg, 
+      rgb(var(--tropical-stone) / 0.4) 0%, 
+      rgb(var(--tropical-stone) / 0.6) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgb(var(--tropical-sage) / 0.2);
+    box-shadow: 
+      0 8px 32px rgb(var(--tropical-deep-green) / 0.3),
+      inset 0 1px 0 rgb(var(--tropical-sand) / 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .tropical-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 12px 40px rgb(var(--tropical-deep-green) / 0.4),
+      inset 0 1px 0 rgb(var(--tropical-sand) / 0.15);
+    border-color: rgb(var(--tropical-ocean-light) / 0.3);
+  }
+
+  /* Organic buttons */
+  .tropical-button {
+    @apply rounded-2xl px-6 py-3 font-medium;
+    background: linear-gradient(135deg, 
+      rgb(var(--tropical-ocean)) 0%, 
+      rgb(var(--tropical-ocean-light)) 100%);
+    color: rgb(var(--tropical-mist));
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tropical-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgb(var(--tropical-sand) / 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .tropical-button:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .tropical-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgb(var(--tropical-ocean) / 0.4);
+  }
+
+  /* Wave decorations */
+  .wave-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='rgba(33,66,99,0.1)' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+    pointer-events: none;
+  }
+
+  /* Status indicators with organic shapes */
+  .status-indicator {
+    @apply rounded-full;
+    width: 12px;
+    height: 12px;
+    position: relative;
+  }
+
+  .status-indicator::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.3;
+    animation: pulse 2s ease-in-out infinite;
   }
 }
 
 @layer utilities {
   .touch-target {
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 48px;
+    min-width: 48px;
   }
-  
+
   .animate-fade-in {
     animation: fadeIn 0.5s ease-in-out;
   }
-  
+
   .animate-slide-up {
-    animation: slideUp 0.3s ease-out;
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  
-  .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  .animate-wave {
+    animation: wave 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, 
+      rgb(var(--tropical-ocean-light)) 0%, 
+      rgb(var(--tropical-sand)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass effect */
+  .glass {
+    background: rgb(var(--tropical-stone) / 0.3);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgb(var(--tropical-sand) / 0.1);
   }
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  0% { transform: translateY(10px); opacity: 0; }
+  0% { transform: translateY(20px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Custom scrollbar */
+@keyframes wave {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-5px) translateY(-5px); }
+  75% { transform: translateX(5px) translateY(5px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatPattern {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Custom scrollbar with tropical colors */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--honolulu-card));
+  background: rgb(var(--tropical-stone) / 0.3);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground));
-  border-radius: 3px;
+  background: linear-gradient(
+    180deg,
+    rgb(var(--tropical-ocean)) 0%,
+    rgb(var(--tropical-ocean-light)) 100%
+  );
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--foreground));
+  background: linear-gradient(
+    180deg,
+    rgb(var(--tropical-ocean-light)) 0%,
+    rgb(var(--tropical-sand) / 0.6) 100%
+  );
+  background-clip: padding-box;
+}
+
+/* Override shadcn/ui components for tropical theme */
+.dark {
+  /* Dark mode inherits the same tropical palette */
+}
+
+/* Enhance cards with organic shapes */
+[class*="rounded-xl"], [class*="rounded-lg"] {
+  border-radius: 1.5rem !important;
+}
+
+/* Button enhancements */
+button:not(.tropical-button) {
+  @apply rounded-2xl;
+  transition: all 0.3s ease;
+}
+
+button:not(.tropical-button):hover {
+  transform: translateY(-1px);
+}
+
+/* Input fields with organic styling */
+input, textarea, select {
+  @apply rounded-2xl;
+  background: rgb(var(--tropical-stone) / 0.5) !important;
+  border-color: rgb(var(--tropical-sage) / 0.3) !important;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: rgb(var(--tropical-ocean-light) / 0.6) !important;
+  box-shadow: 0 0 0 3px rgb(var(--tropical-ocean) / 0.1) !important;
 }
