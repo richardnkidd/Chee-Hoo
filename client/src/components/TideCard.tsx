@@ -65,7 +65,7 @@ export const TideCard: React.FC = () => {
         </div>
 
         <div className="relative">
-          <div className="w-full h-3 bg-[rgb(var(--tropical-stone)/0.3)] rounded-full overflow-hidden">
+          <div className="w-full rounded-full overflow-hidden" style={{ height: '12px', backgroundColor: 'rgb(var(--tropical-stone) / 0.3)' }}>
             <div className="absolute inset-0 opacity-20">
               <div className="h-full w-full bg-gradient-to-r from-transparent via-[rgb(var(--tropical-ocean-light)/0.3)] to-transparent animate-wave"></div>
             </div>
@@ -93,7 +93,7 @@ export const TideCard: React.FC = () => {
       <div className="space-y-3">
         <h3 className="text-sm font-medium text-secondary mb-3">Next Tides</h3>
         {tides.upcoming.slice(0, 4).map((tide, index) => (
-          <div key={index} className="glass rounded-2xl p-4 hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300">
+          <div key={index} className="glass rounded-2xl p-4 hover:bg-[rgb(var(--tropical-stone)/0.2)] transition-all duration-300" style={{ minHeight: '48px' }}>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
@@ -102,9 +102,9 @@ export const TideCard: React.FC = () => {
                     : 'bg-gradient-to-br from-[rgb(var(--tropical-sand)/0.2)] to-[rgb(var(--tropical-sand)/0.1)]'
                 }`}>
                   {tide.type === 'High' ? (
-                    <ArrowUp className="w-5 h-5 text-[rgb(var(--tropical-ocean-light))]" />
+                    <ArrowUp className="text-[rgb(var(--tropical-ocean-light))]" style={{ width: '20px', height: '20px' }} />
                   ) : (
-                    <ArrowDown className="w-5 h-5 text-[rgb(var(--tropical-sand))]" />
+                    <ArrowDown className="text-[rgb(var(--tropical-sand))]" style={{ width: '20px', height: '20px' }} />
                   )}
                 </div>
                 <div>

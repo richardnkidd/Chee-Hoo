@@ -73,7 +73,7 @@ export const EventsCard: React.FC = () => {
           <div key={index} className="border-b border-slate-600 last:border-b-0 pb-4 last:pb-0">
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg flex flex-col items-center justify-center">
+                <div className="bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-lg flex flex-col items-center justify-center" style={{ width: '48px', height: '48px' }}>
                   <span className="text-xs font-semibold text-orange-400">{event.date.split(' ')[0]}</span>
                   <span className="text-sm font-bold text-emphasis-high">{event.day}</span>
                 </div>

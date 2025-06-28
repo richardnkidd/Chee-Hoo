@@ -69,7 +69,7 @@ export const MoviesCard: React.FC = () => {
           <div key={index} className="border-b border-slate-600 last:border-b-0 pb-4 last:pb-0">
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0" style={{ width: '48px', height: '64px' }}>
-                <div className="w-full h-full bg-gradient-to-br from-slate-600 to-slate-700 rounded-md flex items-center justify-center">
+                <div className="bg-gradient-to-br from-slate-600 to-slate-700 rounded-md flex items-center justify-center" style={{ width: '48px', height: '64px' }}>
                   <Image className="w-5 h-5 text-slate-400" />
                 </div>
               </div>
@@ -80,7 +80,7 @@ export const MoviesCard: React.FC = () => {
                 </p>
                 <div className="flex flex-wrap gap-1">
                   {movie.times.map((time, timeIndex) => (
-                    <span key={timeIndex} className="px-2 py-1 bg-slate-700 rounded text-xs text-emphasis-high" style={{ height: '24px', display: 'flex', alignItems: 'center' }}>
+                    <span key={timeIndex} className="px-2 bg-slate-700 rounded text-xs text-emphasis-high inline-flex items-center" style={{ height: '24px' }}>
                       {time}
                     </span>
                   ))}

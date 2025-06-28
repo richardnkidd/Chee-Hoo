@@ -52,7 +52,7 @@ export const WeatherCard: React.FC = () => {
           <div className="relative">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--tropical-ocean))] to-[rgb(var(--tropical-ocean-light))]"></div>
-              <WeatherIcon className="w-8 h-8 text-white relative z-10" />
+              <WeatherIcon className="w-8 h-8 text-white relative z-10" style={{ width: '32px', height: '32px' }} />
             </div>
           </div>
           <div>
@@ -70,7 +70,7 @@ export const WeatherCard: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
         <div>
           <div className="flex items-baseline space-x-3">
-            <span className="text-6xl font-light gradient-text" style={{ fontSize: '48px' }}>{weather.current.temp}°</span>
+            <span className="font-light gradient-text" style={{ fontSize: '48px' }}>{weather.current.temp}°</span>
             <span className="text-xl text-emphasis-medium">F</span>
           </div>
           <p className="text-body text-emphasis-high mt-1">{weather.current.condition}</p>

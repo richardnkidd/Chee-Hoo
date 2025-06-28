@@ -131,6 +131,12 @@ Changelog:
   - Applied exact .tropical-card specification (92-98% opacity, 12px blur)
   - Implemented design token shadow system with proper depth hierarchy
   - Ensured all glass effects match specification opacity guidelines
+- June 28, 2025: Updated component dimensions to match design specifications
+  - WeatherCard: Temperature display exactly 48px, weather icons 32px
+  - TideCard: Progress bar exactly 12px height, tide indicators 20px
+  - MoviesCard: Poster placeholders exactly 48x64px, showtime pills 24px height
+  - EventsCard: Date boxes exactly 48x48px
+  - Applied minimum height requirements for tide items (48px)
 ```
 
 ## User Preferences
