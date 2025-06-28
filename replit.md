@@ -150,6 +150,11 @@ Changelog:
   - Converted metric units to feet for Hawaii surf conditions
   - Added surf data to refresh functionality and dashboard display
   - SurfCard now shows live wave heights, swell direction, and wind conditions
+- June 28, 2025: Updated color palette to exact design specification
+  - Applied exact hex values: Deep green (#191E19), Sage (#435443), Ocean deep (#0F2B3E), Ocean (#214263), Ocean light (#407B9E), Sand (#EADDCA), Volcanic (#8B2323), Stone (#2D2D2B), Mist (#F5F3F0)
+  - Updated semantic color mappings: Background (deep green to ocean gradient), Surface (stone 80-98% opacity), Text Primary (mist), Text Secondary (sand), Accent (ocean light), Error (volcanic)
+  - Converted Tailwind configuration from HSL to RGB format for proper color system integration
+  - Updated background gradient to use design specification colors
 ```
 
 ## User Preferences

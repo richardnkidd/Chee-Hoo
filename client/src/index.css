@@ -5,16 +5,16 @@
 @tailwind utilities;
 
 :root {
-  /* Kamaʻāina Compass Design System - Enhanced Contrast Palette */
-  --tropical-deep-green: 35, 40, 35; /* Lighter forest green for better contrast */
-  --tropical-sage: 87, 104, 87; /* Brighter sage green for visibility */
-  --tropical-ocean-deep: 25, 53, 72; /* Lighter deep ocean blue */
-  --tropical-ocean: 53, 86, 119; /* Enhanced ocean blue */
-  --tropical-ocean-light: 84, 143, 178; /* Much lighter ocean for highlights */
-  --tropical-sand: 244, 231, 212; /* Brighter sand for better text contrast */
-  --tropical-volcanic: 159, 55, 55; /* Lighter volcanic red */
-  --tropical-stone: 65, 65, 63; /* Lighter charcoal for card backgrounds */
-  --tropical-mist: 255, 253, 250; /* Pure white for maximum text contrast */
+  /* Kamaʻāina Compass Design System - Exact Specification Colors */
+  --tropical-deep-green: 25, 30, 25; /* #191E19 - Deep forest green */
+  --tropical-sage: 67, 84, 67; /* #435443 - Sage green */
+  --tropical-ocean-deep: 15, 43, 62; /* #0F2B3E - Deep ocean blue */
+  --tropical-ocean: 33, 66, 99; /* #214263 - Ocean blue */
+  --tropical-ocean-light: 64, 123, 158; /* #407B9E - Light ocean */
+  --tropical-sand: 234, 221, 202; /* #EADDCA - Light tan/sand */
+  --tropical-volcanic: 139, 35, 35; /* #8B2323 - Lava red */
+  --tropical-stone: 45, 45, 43; /* #2D2D2B - Dark grey/charcoal */
+  --tropical-mist: 245, 243, 240; /* #F5F3F0 - Off-white */
 
   /* Design System Shadows - Design Specification Exact */
   --shadow-sm: 0 2px 8px rgb(0, 0, 0, 0.1);
@@ -31,24 +31,24 @@
   --z-header: 50;
   --z-tooltip: 60;
 
-  /* Base color mappings - Enhanced Contrast */
-  --background: rgb(var(--tropical-deep-green));
-  --foreground: rgb(var(--tropical-mist));
+  /* Semantic Color Mappings - Design Specification Exact */
+  --background: rgb(var(--tropical-deep-green)); /* Background: Deep green */
+  --foreground: rgb(var(--tropical-mist)); /* Text Primary: Mist (#F5F3F0) */
   --muted: rgb(var(--tropical-sage) / 0.5);
-  --muted-foreground: rgb(var(--tropical-sand));
-  --popover: rgb(var(--tropical-stone) / 0.98);
+  --muted-foreground: rgb(var(--tropical-sand)); /* Text Secondary: Sand (#EADDCA) */
+  --popover: rgb(var(--tropical-stone) / 0.98); /* Surface: Stone with varying opacity (80-98%) */
   --popover-foreground: rgb(var(--tropical-mist));
-  --card: rgb(var(--tropical-stone) / 0.85);
+  --card: rgb(var(--tropical-stone) / 0.92); /* Surface: Stone 92-98% opacity */
   --card-foreground: rgb(var(--tropical-mist));
   --border: rgb(var(--tropical-sage) / 0.3);
-  --input: rgb(var(--tropical-stone) / 0.7);
+  --input: rgb(var(--tropical-stone) / 0.8); /* Surface: Stone 80% opacity */
   --primary: rgb(var(--tropical-ocean));
   --primary-foreground: rgb(var(--tropical-mist));
   --secondary: rgb(var(--tropical-sage));
   --secondary-foreground: rgb(var(--tropical-mist));
-  --accent: rgb(var(--tropical-ocean-light));
+  --accent: rgb(var(--tropical-ocean-light)); /* Accent: Ocean light (#407B9E) */
   --accent-foreground: rgb(var(--tropical-deep-green));
-  --destructive: rgb(var(--tropical-volcanic));
+  --destructive: rgb(var(--tropical-volcanic)); /* Error/Destructive: Volcanic (#8B2323) */
   --destructive-foreground: rgb(var(--tropical-mist));
   --ring: rgb(var(--tropical-ocean-light) / 0.5);
   --radius: 1.25rem;
@@ -68,14 +68,12 @@
     font-family: 'Outfit', sans-serif;
     background: linear-gradient(135deg,
       rgb(var(--tropical-deep-green)) 0%,
-      rgb(var(--tropical-ocean-deep) / 0.8) 25%,
-      rgb(var(--tropical-stone) / 0.7) 50%,
-      rgb(var(--tropical-ocean) / 0.6) 75%,
-      rgb(var(--tropical-ocean-light) / 0.4) 100%);
-    /* Lighter fallback solid color for better readability */
+      rgb(var(--tropical-stone) / 0.9) 50%,
+      rgb(var(--tropical-ocean-deep)) 100%);
+    /* Design Specification: Deep green to ocean gradient */
     background-color: rgb(var(--tropical-deep-green));
     background-attachment: fixed;
-    color: rgb(var(--tropical-mist));
+    color: rgb(var(--tropical-mist)); /* Text Primary: Mist (#F5F3F0) */
     position: relative;
   }
 
